@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>683349791115-i6mp7e5j9rkgb76hosfqanldp62nf893.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.683349791115-i6mp7e5j9rkgb76hosfqanldp62nf893</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBmpa8OnQkO1UjCpo708CxGThtyJrZHtyE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>683349791115</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.imalka.Muthukumara.Cafe-Manager</string>
+	<key>PROJECT_ID</key>
+	<string>cafenibmcustomer</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cafenibmcustomer.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:683349791115:ios:7efaa44aafe883ff779f8e</string>
+	<key>DATABASE_URL</key>
+	<string>https://cafenibmcustomer-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
