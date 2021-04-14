@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import  Firebase
+import  Loaf
 
 class SignUpViewController: UIViewController {
     
+    var ref: DatabaseReference!
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var EmailField: UITextField!
@@ -19,11 +22,75 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         setupCustomUI()
     }
+    @IBAction func registerTapped(_ sender: UIButton) {
+        
+        if let name = nameField.text{
+            if name.isEmpty{
+                Loaf("Name cannot be empty!", state: .error, sender: self).show()
+                return
+            }
+        }
+        
+        if !FieldValidator.isValidEmail(EmailField.text ?? ""){
+            Loaf("Invalid email address", state: .error, sender: self).show()
+            return
+        }
+        
+        
+        if !FieldValidator.isValidPassword(pass: passwordField.text ?? "", minLength: 8, maxLength: 20){
+            
+            Loaf("Invalid password", state: .error, sender: self).show()
+            return
+            
+        }
+        if !FieldValidator.isValidMobileNo(phoneField.text ?? ""){
+            
+            Loaf("Invalid mobile no", state: .error, sender: self).show()
+            return
+            
+        }
+        registerUser(email: EmailField.text!, password: passwordField.text!)
+    }
+  
+}
+
+extension SignUpViewController{
+    func registerUser(email:String,password:String){
+        
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let err =  error{
+                Loaf("\(err.localizedDescription)", state: .error, sender: self).show()
+            }
+            else{
+                let user = User(name: self.nameField.text!, email: self.EmailField.text!, password: self.passwordField.text!, phonenumber: self.phoneField.text!)
+                self.createUser(user: user)
+            }
+        }
+    }
     
-    @IBAction func signInTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    func createUser(user:User){
+        
+        let userData = [
+            "userName" : user.name,
+            "userEmail" : user.email,
+            "userPhone" : user.phonenumber,
+            "userPassword" : user.password,
+        ]
+        self.ref.child("usersCafeManager").child(user.email
+                                                    .replacingOccurrences(of: "@", with: "_")
+                                                    .replacingOccurrences(of: ".", with: "_")
+        ).setValue(userData){ (error, ref) in
+            if let err =  error{
+                Loaf("\(err.localizedDescription)", state: .error, sender: self).show()
+            }
+            else{
+                Loaf("User Registered successfully", state: .success, sender: self).show()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     func setupCustomUI(){
@@ -33,5 +100,9 @@ class SignUpViewController: UIViewController {
         CustomUI.setupTextField(txtField: passwordField)
         CustomUI.setupAuthButton(btnCustom: registerButton)
     }
+    @IBAction func signInTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }
