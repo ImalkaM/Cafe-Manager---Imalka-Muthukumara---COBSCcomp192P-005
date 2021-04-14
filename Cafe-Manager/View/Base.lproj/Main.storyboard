@@ -328,7 +328,9 @@
                         <viewLayoutGuide key="safeArea" id="PM1-sy-FEw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ORDER" id="05T-U6-E9N"/>
+                    <tabBarItem key="tabBarItem" title="ORDER" image="checklist" id="05T-U6-E9N">
+                        <inset key="imageInsets" minX="0.0" minY="69" maxX="0.0" maxY="73"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuI-jc-FbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -344,7 +346,9 @@
                         <viewLayoutGuide key="safeArea" id="Xe3-NT-zct"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ACCOUNT" id="5Zb-0O-fuf"/>
+                    <tabBarItem key="tabBarItem" title="ACCOUNT" image="account" id="5Zb-0O-fuf">
+                        <inset key="imageInsets" minX="0.0" minY="69" maxX="0.0" maxY="73"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jr-e5-Ikh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -353,7 +357,7 @@
         <!--STORE-->
         <scene sceneID="iyP-JR-1ku">
             <objects>
-                <viewController id="nJE-vV-Fpp" sceneMemberID="viewController">
+                <viewController id="nJE-vV-Fpp" customClass="StoreViewController" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NdS-fH-faj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -391,7 +395,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="0Nu-cl-xJO" firstAttribute="top" secondItem="qzc-NN-fEx" secondAttribute="top" id="N3B-vz-3sA"/>
                                     <constraint firstAttribute="bottom" secondItem="0Nu-cl-xJO" secondAttribute="bottom" id="bGP-1M-oGK"/>
@@ -409,7 +413,15 @@
                             <constraint firstItem="qzc-NN-fEx" firstAttribute="leading" secondItem="shn-Ls-fz8" secondAttribute="leading" id="oZO-Bf-eZa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="STORE" id="zi8-kf-kN4"/>
+                    <tabBarItem key="tabBarItem" title="STORE" image="store" id="zi8-kf-kN4">
+                        <inset key="imageInsets" minX="0.0" minY="69" maxX="0.0" maxY="73"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="categoryBtn" destination="4DT-ab-ID6" id="zh8-wF-v4T"/>
+                        <outlet property="menuBtn" destination="tqD-v4-Gx6" id="i96-iP-TR4"/>
+                        <outlet property="previewBtn" destination="Cxs-gp-yp9" id="nL6-gl-EPz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKK-D8-3pO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -455,12 +467,12 @@
         <segue reference="iQd-g2-3C4"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="account" width="170.5" height="170.5"/>
+        <image name="checklist" width="170.5" height="170.5"/>
         <image name="mainLogo" width="256" height="256"/>
+        <image name="store" width="170.5" height="170.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
