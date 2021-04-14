@@ -107,6 +107,7 @@
                         <outlet property="emailField" destination="SFc-S1-Uvd" id="0WM-Ph-val"/>
                         <outlet property="loginButton" destination="pbc-dg-ILJ" id="SbB-sb-PnE"/>
                         <outlet property="passwordField" destination="Iob-i7-1PX" id="nrY-U7-SrG"/>
+                        <segue destination="TkI-gj-cU0" kind="presentation" identifier="LoginToHome" modalPresentationStyle="fullScreen" id="iQd-g2-3C4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -310,15 +311,90 @@
                         <outlet property="passwordField" destination="fqO-Ze-AP8" id="Syq-Xs-eFP"/>
                         <outlet property="phoneField" destination="rFq-sM-oK8" id="Ibw-bS-djC"/>
                         <outlet property="registerButton" destination="1W6-9O-hhK" id="0SY-2W-9mQ"/>
+                        <segue destination="TkI-gj-cU0" kind="presentation" identifier="RegisterToHome" modalPresentationStyle="fullScreen" id="0D5-0b-kKw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C4e-4n-p9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="538" y="75"/>
         </scene>
+        <!--ORDER-->
+        <scene sceneID="1kf-RJ-U9d">
+            <objects>
+                <viewController id="LKe-tV-ygD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gf6-p0-XIH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PM1-sy-FEw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="ORDER" id="05T-U6-E9N"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tuI-jc-FbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1326" y="-917"/>
+        </scene>
+        <!--ACCOUNT-->
+        <scene sceneID="oFK-ZX-Wi2">
+            <objects>
+                <viewController id="kOM-XQ-aM4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xnr-WR-SVU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Xe3-NT-zct"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="ACCOUNT" id="5Zb-0O-fuf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Jr-e5-Ikh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1343" y="-200"/>
+        </scene>
+        <!--STORE-->
+        <scene sceneID="iyP-JR-1ku">
+            <objects>
+                <viewController id="nJE-vV-Fpp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NdS-fH-faj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="shn-Ls-fz8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="STORE" id="zi8-kf-kN4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IKK-D8-3pO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1326" y="-1583"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="56p-yR-yiU">
+            <objects>
+                <tabBarController id="TkI-gj-cU0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gRh-d0-pox"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q56-b4-loy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="nJE-vV-Fpp" kind="relationship" relationship="viewControllers" id="jGz-0r-dC6"/>
+                        <segue destination="LKe-tV-ygD" kind="relationship" relationship="viewControllers" id="RfJ-Md-toL"/>
+                        <segue destination="kOM-XQ-aM4" kind="relationship" relationship="viewControllers" id="PRs-Yk-N0b"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d91-ri-FKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="-935"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0D5-0b-kKw"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="mainLogo" width="256" height="256"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
