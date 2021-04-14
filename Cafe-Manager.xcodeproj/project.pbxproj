@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
-		AF923C2E26267F55001AD12C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2D26267F55001AD12C /* ViewController.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
 		AF923C3326267F58001AD12C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF923C3226267F58001AD12C /* Assets.xcassets */; };
 		AF923C3626267F58001AD12C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C3426267F58001AD12C /* LaunchScreen.storyboard */; };
 		AF923C4126267F58001AD12C /* Cafe_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C4026267F58001AD12C /* Cafe_ManagerTests.swift */; };
 		AF923C4C26267F58001AD12C /* Cafe_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C4B26267F58001AD12C /* Cafe_ManagerUITests.swift */; };
+		AF923C8426268E7E001AD12C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C8326268E7E001AD12C /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AF923C2D26267F55001AD12C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF923C3026267F55001AD12C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF923C3226267F58001AD12C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF923C3526267F58001AD12C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		AF923C4726267F58001AD12C /* Cafe-ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cafe-ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C4B26267F58001AD12C /* Cafe_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe_ManagerUITests.swift; sourceTree = "<group>"; };
 		AF923C4D26267F58001AD12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF923C8326268E7E001AD12C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +99,11 @@
 		AF923C2826267F55001AD12C /* Cafe-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				AF923C7F26268AAA001AD12C /* View */,
+				AF923C7E26268AA1001AD12C /* Controller */,
+				AF923C7D26268A99001AD12C /* Model */,
 				AF923C2926267F55001AD12C /* AppDelegate.swift */,
 				AF923C2B26267F55001AD12C /* SceneDelegate.swift */,
-				AF923C2D26267F55001AD12C /* ViewController.swift */,
-				AF923C2F26267F55001AD12C /* Main.storyboard */,
 				AF923C3226267F58001AD12C /* Assets.xcassets */,
 				AF923C3426267F58001AD12C /* LaunchScreen.storyboard */,
 				AF923C3726267F58001AD12C /* Info.plist */,
@@ -126,6 +127,29 @@
 				AF923C4D26267F58001AD12C /* Info.plist */,
 			);
 			path = "Cafe-ManagerUITests";
+			sourceTree = "<group>";
+		};
+		AF923C7D26268A99001AD12C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AF923C7E26268AA1001AD12C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AF923C8326268E7E001AD12C /* SignInViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AF923C7F26268AAA001AD12C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF923C2F26267F55001AD12C /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF923C2E26267F55001AD12C /* ViewController.swift in Sources */,
+				AF923C8426268E7E001AD12C /* SignInViewController.swift in Sources */,
 				AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */,
 				AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */,
 			);
