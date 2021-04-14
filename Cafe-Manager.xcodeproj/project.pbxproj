@@ -15,6 +15,8 @@
 		AF923C4126267F58001AD12C /* Cafe_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C4026267F58001AD12C /* Cafe_ManagerTests.swift */; };
 		AF923C4C26267F58001AD12C /* Cafe_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C4B26267F58001AD12C /* Cafe_ManagerUITests.swift */; };
 		AF923C8426268E7E001AD12C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C8326268E7E001AD12C /* SignInViewController.swift */; };
+		AF923C8E2626A3DB001AD12C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C8D2626A3DB001AD12C /* SignUpViewController.swift */; };
+		AF923C972626A546001AD12C /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C962626A546001AD12C /* CustomUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		AF923C4B26267F58001AD12C /* Cafe_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe_ManagerUITests.swift; sourceTree = "<group>"; };
 		AF923C4D26267F58001AD12C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF923C8326268E7E001AD12C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		AF923C8D2626A3DB001AD12C /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AF923C962626A546001AD12C /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		AF923C2826267F55001AD12C /* Cafe-Manager */ = {
 			isa = PBXGroup;
 			children = (
+				AF923C952626A4FA001AD12C /* Utilities */,
 				AF923C7F26268AAA001AD12C /* View */,
 				AF923C7E26268AA1001AD12C /* Controller */,
 				AF923C7D26268A99001AD12C /* Model */,
@@ -139,7 +144,8 @@
 		AF923C7E26268AA1001AD12C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AF923C8326268E7E001AD12C /* SignInViewController.swift */,
+				AF923C8C2626A3C9001AD12C /* SignUp */,
+				AF923C8B2626A3B8001AD12C /* SignIn */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,6 +156,30 @@
 				AF923C2F26267F55001AD12C /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AF923C8B2626A3B8001AD12C /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				AF923C8326268E7E001AD12C /* SignInViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		AF923C8C2626A3C9001AD12C /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AF923C8D2626A3DB001AD12C /* SignUpViewController.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		AF923C952626A4FA001AD12C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AF923C962626A546001AD12C /* CustomUI.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +314,8 @@
 			files = (
 				AF923C8426268E7E001AD12C /* SignInViewController.swift in Sources */,
 				AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */,
+				AF923C972626A546001AD12C /* CustomUI.swift in Sources */,
+				AF923C8E2626A3DB001AD12C /* SignUpViewController.swift in Sources */,
 				AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
