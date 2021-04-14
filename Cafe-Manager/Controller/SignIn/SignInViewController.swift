@@ -17,10 +17,14 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    var orders:[Order] = []
+    var orderedUsers:[String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         setupCustomUI()
+        
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
@@ -39,6 +43,7 @@ class SignInViewController: UIViewController {
         }
         
         auhtenticateUser(email: emailField.text!, password: passwordField.text!)
+        print(orders)
     }
     func auhtenticateUser(email:String,password:String){
         
@@ -48,7 +53,7 @@ class SignInViewController: UIViewController {
             }
             else{
                 if let email = authResult?.user.email{
-                    self.getUserData(email: email)
+                    //self.getOrderData()
                 }else{
                     Loaf("User not found!", state: .error, sender: self).show()
                 }
@@ -80,6 +85,54 @@ class SignInViewController: UIViewController {
                             Loaf("User not found!", state: .error, sender: self).show()
                         }
                     })
+    }
+    
+    func getOrderedUsers(){
+        
+        self.ref.child("orders").observe(.value, with: { (snapshot) in
+            if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in result {
+                    let orderID = child.key
+                    self.orderedUsers.append(orderID)
+                    
+                }
+                // print(self.orderedUsers)
+                self.getOrders()
+            }
+        })}
+    func getOrders(){
+        
+        //self.orders.removeAll()
+        
+        for user in orderedUsers{
+            //print(user)
+            self.ref.child("orders").child(user)
+                .observe(.value) { (snapshot) in
+                    if let data = snapshot.value{
+                        if let orders = data as? [String:Any]{
+                            for singleOrder in orders{
+                                if let orderInfo = singleOrder.value as? [String:Any]{
+                                    var placedOrder = Order()
+                                    placedOrder.orderID = singleOrder.key
+                                    placedOrder.custName = user
+                                    placedOrder.orderStatus = orderInfo["status"] as! String
+                                    if let orderItems = orderInfo["orderItems"] as? [Any]{
+                                        for item in orderItems{
+                                            if let itemInfo = item as? [String:Any]{
+                                                placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
+                                            }
+                                        }
+                                    }
+                                    self.orders.append(placedOrder)
+                                    
+                                }
+                                //self.orderTable.reloadData()
+                            }
+                        }
+                    }
+                }
+        }
+        
     }
     
     func setupCustomUI(){

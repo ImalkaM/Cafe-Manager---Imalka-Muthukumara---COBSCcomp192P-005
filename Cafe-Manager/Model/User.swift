@@ -14,7 +14,6 @@ struct User {
     var password:String
     var phonenumber:String
 }
-
 struct FoodItem {
     var id:String
     var foodName:String
@@ -24,7 +23,6 @@ struct FoodItem {
     var discount:Int
     var image:String
 }
-
 struct CartItem {
     var itemName: String = ""
     var itemImgRes: String = ""
@@ -36,13 +34,14 @@ struct CartItem {
     }
     
 
-//    var discountedPrice: Double {
-//        return itemPrice - (itemPrice * (Double(discount)/100))
-//    }
 }
-
-struct Order {
+struct Order{
     var orderID: String = ""
-    var orderStatus:String = ""
+    var custName:String = ""
+    var foodName:String = ""
+    var quantity:Int = 0
+    var foodPrice:Double = 0.0
+    var orderStatus:String = "NEW"
+    var date:Date = Date()
     var orderTotal:Double = 0.0
 }
