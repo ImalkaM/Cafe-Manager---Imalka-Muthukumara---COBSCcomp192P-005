@@ -32,9 +32,12 @@ struct CartItem {
     var itemTotal: Double {
         return Double(itemCount) *  itemPrice
     }
-    
-
 }
+struct Category{
+    var categoryID: String = ""
+    var categoryName:String = ""
+}
+
 struct Order{
     var orderID: String = ""
     var custName:String = ""

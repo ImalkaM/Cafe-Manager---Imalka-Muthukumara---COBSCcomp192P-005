@@ -29,6 +29,11 @@ struct K {
         static let qtyField = "qty"
     }
     
+    struct category {
+        static let nibNameCategoryTable = "CategoryTableViewCell"
+        static let categoryTableCell = "CategoryTableCell"
+    }
+    
 }
 
 
