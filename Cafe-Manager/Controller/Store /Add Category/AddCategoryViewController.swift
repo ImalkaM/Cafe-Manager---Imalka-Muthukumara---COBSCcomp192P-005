@@ -12,7 +12,7 @@ import Loaf
 class AddCategoryViewController: UIViewController {
     var ref: DatabaseReference!
     var category:Category = Category(categoryID: "", categoryName: "")
-    var categoryCollection:[Category] = []
+   //var categoryCollection:[Category] = []
     
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
@@ -69,12 +69,12 @@ class AddCategoryViewController: UIViewController {
         self.ref.child("category").observe(.value) { (snapshot) in
             if let data = snapshot.value{
                 if let orders = data as? [String:Any]{
-                    self.categoryCollection.removeAll()
+                   StoreHandler.categoryCollection.removeAll()
                     for singleCategory in orders{
                         if let categoryInfo = singleCategory.value as? [String:Any]{
                             self.category.categoryName = categoryInfo["categoryName"] as! String
                             self.category.categoryID = singleCategory.key
-                            self.categoryCollection.append(self.category)
+                            StoreHandler.categoryCollection.append(self.category)
                         }
                     }
                     self.categoryTable.reloadData()
@@ -85,7 +85,7 @@ class AddCategoryViewController: UIViewController {
     
     func deleteCategory(index:Int){
         
-        self.ref.child("category").child(categoryCollection[index].categoryID).removeValue { (err, ref) in
+        self.ref.child("category").child(StoreHandler.categoryCollection[index].categoryID).removeValue { (err, ref) in
             if err != nil{
                 
             }
@@ -95,13 +95,13 @@ class AddCategoryViewController: UIViewController {
 
 extension AddCategoryViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryCollection.count
+        return StoreHandler.categoryCollection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTable.dequeueReusableCell(withIdentifier: K.category.categoryTableCell, for: indexPath) as! CategoryTableViewCell
         
-        cell.setupUI(category: categoryCollection[indexPath.row])
+        cell.setupUI(category: StoreHandler.categoryCollection[indexPath.row])
         //cell.setupUI(order: orders[indexPath.row])
         
         return cell
@@ -113,9 +113,9 @@ extension AddCategoryViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteCategory(index: indexPath.row)
-            categoryCollection.remove(at: indexPath.row)
+            StoreHandler.categoryCollection.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            categoryCollection.removeAll()
+            StoreHandler.categoryCollection.removeAll()
             getCategorys()
             
         } else if editingStyle == .insert {

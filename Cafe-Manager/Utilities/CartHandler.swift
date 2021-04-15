@@ -19,3 +19,15 @@ class CartHandler{
         self.fooditem.removeAll()
     }
 }
+
+class StoreHandler{
+    static var categoryCollection:[Category] = []
+    
+    static func getCartItems() -> [Category]{
+        return categoryCollection
+    }
+    
+    static func clearCart(){
+        self.categoryCollection.removeAll()
+    }
+}

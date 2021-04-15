@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 
 struct User {
@@ -22,6 +23,7 @@ struct FoodItem {
     var foodPrice:Double
     var discount:Int
     var image:String
+    var isAvailable:Bool
 }
 struct CartItem {
     var itemName: String = ""
@@ -36,6 +38,7 @@ struct CartItem {
 struct Category{
     var categoryID: String = ""
     var categoryName:String = ""
+
 }
 
 struct Order{
