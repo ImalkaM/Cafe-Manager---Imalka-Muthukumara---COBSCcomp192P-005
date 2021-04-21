@@ -442,7 +442,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oYM-dq-5Cs">
-                                <rect key="frame" x="30" y="89" width="315" height="392"/>
+                                <rect key="frame" x="30" y="89" width="315" height="346"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3bg-32-GFW">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="34"/>
@@ -520,20 +520,6 @@
                                             <constraint firstAttribute="trailing" secondItem="gzV-4u-mGs" secondAttribute="trailing" id="bEA-R0-m97"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="win-ON-0Xi">
-                                        <rect key="frame" x="0.0" y="361" width="315" height="31"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell as an Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEa-Y6-vnY">
-                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="31"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpk-UP-bpt">
-                                                <rect key="frame" x="182.5" y="0.0" width="134.5" height="31"/>
-                                            </switch>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="4U0-QW-HIx">
@@ -558,20 +544,59 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="win-ON-0Xi">
+                                <rect key="frame" x="30" y="455" width="315" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sell as an Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEa-Y6-vnY">
+                                        <rect key="frame" x="0.0" y="0.0" width="132.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpk-UP-bpt">
+                                        <rect key="frame" x="182.5" y="0.0" width="134.5" height="31"/>
+                                        <connections>
+                                            <action selector="availableSwitch:" destination="Iuq-kg-otH" eventType="valueChanged" id="2IE-VG-IWC"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJh-tK-dPm">
+                                <rect key="frame" x="50" y="607" width="275" height="30"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.86666666670000003" green="0.99997437" blue="0.99999129769999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="Iuq-kg-otH" eventType="touchUpInside" id="Ehk-F2-qes"/>
+                                    <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rlV-bB-f8W"/>
+                                    <action selector="registerTapped:" destination="zDo-wI-yHZ" eventType="touchUpInside" id="RXe-h1-tyX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h9M-T0-daP"/>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.99997437" blue="0.99999129769999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4U0-QW-HIx" firstAttribute="leading" secondItem="h9M-T0-daP" secondAttribute="leading" constant="15" id="2Gw-gr-z3e"/>
                             <constraint firstItem="oYM-dq-5Cs" firstAttribute="top" secondItem="4U0-QW-HIx" secondAttribute="bottom" constant="20" id="3LN-m0-Vo9"/>
+                            <constraint firstItem="win-ON-0Xi" firstAttribute="top" secondItem="oYM-dq-5Cs" secondAttribute="bottom" constant="20" id="AlD-Am-rdj"/>
+                            <constraint firstItem="h9M-T0-daP" firstAttribute="trailing" secondItem="wJh-tK-dPm" secondAttribute="trailing" constant="50" id="Kcl-7L-2hn"/>
+                            <constraint firstItem="h9M-T0-daP" firstAttribute="trailing" secondItem="win-ON-0Xi" secondAttribute="trailing" constant="30" id="QW7-45-Dh0"/>
+                            <constraint firstItem="win-ON-0Xi" firstAttribute="centerX" secondItem="DSN-Nf-yJc" secondAttribute="centerX" id="VUC-yv-Cmb"/>
+                            <constraint firstItem="wJh-tK-dPm" firstAttribute="centerX" secondItem="DSN-Nf-yJc" secondAttribute="centerX" id="YLd-qN-3sY"/>
+                            <constraint firstItem="h9M-T0-daP" firstAttribute="bottom" secondItem="wJh-tK-dPm" secondAttribute="bottom" constant="30" id="ceW-az-IWc"/>
                             <constraint firstItem="h9M-T0-daP" firstAttribute="trailing" secondItem="oYM-dq-5Cs" secondAttribute="trailing" constant="30" id="kK3-81-TvX"/>
                             <constraint firstItem="oYM-dq-5Cs" firstAttribute="centerX" secondItem="DSN-Nf-yJc" secondAttribute="centerX" id="la2-UO-M08"/>
                             <constraint firstItem="oYM-dq-5Cs" firstAttribute="leading" secondItem="h9M-T0-daP" secondAttribute="leading" constant="30" id="pX1-qN-NL0"/>
+                            <constraint firstItem="wJh-tK-dPm" firstAttribute="leading" secondItem="h9M-T0-daP" secondAttribute="leading" constant="50" id="tPM-g8-5gd"/>
                             <constraint firstItem="4U0-QW-HIx" firstAttribute="top" secondItem="h9M-T0-daP" secondAttribute="top" id="vKY-Go-Pb7"/>
+                            <constraint firstItem="win-ON-0Xi" firstAttribute="leading" secondItem="h9M-T0-daP" secondAttribute="leading" constant="30" id="vuS-aF-y6b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jLQ-41-gSz"/>
                     <connections>
+                        <outlet property="addButton" destination="wJh-tK-dPm" id="Scj-R1-2D5"/>
+                        <outlet property="avaialableButton" destination="Xpk-UP-bpt" id="9SI-hu-WvX"/>
                         <outlet property="btnDrop" destination="Qxk-aJ-PCU" id="Xj1-6i-OOI"/>
                         <outlet property="descriptionfield" destination="Rgx-kC-0Pg" id="wV5-kn-G8o"/>
                         <outlet property="dicountField" destination="0at-9K-EHL" id="VO0-f9-4aA"/>
