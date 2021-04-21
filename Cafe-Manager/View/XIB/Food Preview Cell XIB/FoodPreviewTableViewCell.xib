@@ -82,6 +82,15 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="Eje-I3-y2L" id="UWc-jh-N6K"/>
+                <outlet property="discountContainer" destination="oNx-VK-CdJ" id="soO-pn-EnK"/>
+                <outlet property="discountLabel" destination="YDg-I3-y4V" id="2LB-Mn-6jl"/>
+                <outlet property="foodNameLabel" destination="QiZ-Pq-1Ma" id="ZBT-UJ-xf5"/>
+                <outlet property="imageFood" destination="Bdb-yf-qvy" id="kOB-0h-drN"/>
+                <outlet property="priceLabel" destination="KgA-pI-hAf" id="2vg-kQ-OuR"/>
+                <outlet property="toggleSwitch" destination="8rS-iu-QJD" id="8m8-vj-Wvg"/>
+            </connections>
             <point key="canvasLocation" x="160.86956521739131" y="87.723214285714278"/>
         </tableViewCell>
     </objects>
