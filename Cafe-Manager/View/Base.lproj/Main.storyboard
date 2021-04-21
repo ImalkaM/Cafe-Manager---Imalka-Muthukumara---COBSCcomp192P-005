@@ -410,12 +410,21 @@
                                     <constraint firstAttribute="height" constant="51" id="pRK-fo-QpO"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Fb-HJ-Gj3">
+                                <rect key="frame" x="16" y="70" width="343" height="534"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="shn-Ls-fz8"/>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.99997437" blue="0.99999129769999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qzc-NN-fEx" firstAttribute="trailing" secondItem="shn-Ls-fz8" secondAttribute="trailing" id="3U6-pH-BqI"/>
+                            <constraint firstItem="2Fb-HJ-Gj3" firstAttribute="leading" secondItem="shn-Ls-fz8" secondAttribute="leading" constant="16" id="7pv-MF-h2x"/>
+                            <constraint firstItem="2Fb-HJ-Gj3" firstAttribute="top" secondItem="qzc-NN-fEx" secondAttribute="bottom" constant="19" id="AbC-xQ-GbR"/>
+                            <constraint firstItem="shn-Ls-fz8" firstAttribute="bottom" secondItem="2Fb-HJ-Gj3" secondAttribute="bottom" constant="14" id="DYz-qw-srZ"/>
+                            <constraint firstItem="2Fb-HJ-Gj3" firstAttribute="centerX" secondItem="NdS-fH-faj" secondAttribute="centerX" id="Sw8-0u-SQH"/>
                             <constraint firstItem="qzc-NN-fEx" firstAttribute="top" secondItem="shn-Ls-fz8" secondAttribute="top" id="THE-oh-5sO"/>
+                            <constraint firstItem="shn-Ls-fz8" firstAttribute="trailing" secondItem="2Fb-HJ-Gj3" secondAttribute="trailing" constant="16" id="Wye-gq-mBR"/>
                             <constraint firstItem="qzc-NN-fEx" firstAttribute="leading" secondItem="shn-Ls-fz8" secondAttribute="leading" id="oZO-Bf-eZa"/>
                         </constraints>
                     </view>
@@ -431,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKK-D8-3pO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1311" y="-1799"/>
+            <point key="canvasLocation" x="1309.5999999999999" y="-1799.5502248875564"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="puF-Yv-VJz">

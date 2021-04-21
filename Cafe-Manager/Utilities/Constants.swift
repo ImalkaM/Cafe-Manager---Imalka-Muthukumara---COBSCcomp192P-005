@@ -22,6 +22,8 @@ struct K {
     static let launchToHomeSeauge = "LaunchToHome"
     static let launchToLogin = "LaunchToLogin"
     
+    
+    
     struct FStoreCart {
         static let collectionNameCartTable = "CartCell"
         static let priceField = "price"
@@ -32,6 +34,10 @@ struct K {
     struct category {
         static let nibNameCategoryTable = "CategoryTableViewCell"
         static let categoryTableCell = "CategoryTableCell"
+    }
+    struct previewTable {
+        static let nibNameCategoryTable = "FoodPreviewTableViewCell"
+        static let categoryTableCell = "FoodPCell"
     }
     
 }
