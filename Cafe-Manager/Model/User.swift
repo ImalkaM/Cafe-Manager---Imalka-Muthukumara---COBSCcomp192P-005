@@ -16,14 +16,14 @@ struct User {
     var phonenumber:String
 }
 struct FoodItem {
-    var id:String
-    var foodName:String
-    var foodDescription:String
-    var category:String
-    var foodPrice:Double
-    var discount:Int
-    var image:String
-    var isAvailable:Bool
+    var id:String = ""
+    var foodName:String = ""
+    var foodDescription:String = ""
+    var category:String = ""
+    var foodPrice:Double = 0.0
+    var discount:Int = 0
+    var image:String = ""
+    var isAvailable:Bool = false
 }
 struct CartItem {
     var itemName: String = ""
@@ -50,4 +50,9 @@ struct Order{
     var orderStatus:String = "NEW"
     var date:Date = Date()
     var orderTotal:Double = 0.0
+}
+
+struct CategoryItems {
+   let name : String
+   var items : [FoodItem]
 }

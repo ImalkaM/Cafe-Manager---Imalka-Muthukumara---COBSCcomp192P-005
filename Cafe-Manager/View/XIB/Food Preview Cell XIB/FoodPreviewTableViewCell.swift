@@ -38,6 +38,7 @@ class FoodPreviewTableViewCell: UITableViewCell {
         descriptionLabel.text = foodItem.foodDescription
         priceLabel.text = "RS.\(String(foodItem.foodPrice))"
         imageFood.kf.setImage(with: URL(string: foodItem.image))
+        toggleSwitch.isOn = foodItem.isAvailable
         
         if foodItem.discount > 0 {
             discountContainer.isHidden = false

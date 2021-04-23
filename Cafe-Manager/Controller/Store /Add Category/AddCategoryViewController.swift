@@ -24,7 +24,7 @@ class AddCategoryViewController: UIViewController {
         ref = Database.database().reference()
         setupCustomUI()
         categoryTable.register(UINib(nibName: K.category.nibNameCategoryTable, bundle: nil), forCellReuseIdentifier: K.category.categoryTableCell)
-        getCategorys()
+       // getCategorys()
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -106,6 +106,7 @@ extension AddCategoryViewController:UITableViewDataSource{
         
         return cell
     }
+   
     
 }
 extension AddCategoryViewController:UITableViewDelegate{

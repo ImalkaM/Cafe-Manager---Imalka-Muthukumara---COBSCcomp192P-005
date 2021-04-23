@@ -131,11 +131,11 @@ class AddItemViewController: UIViewController {
             "foodName" : foodItem.foodName,
             "foodDescription" : foodItem.foodDescription,
             "price" : foodItem.foodPrice,
-            "category" : foodItem.category,
             "discount" : foodItem.discount,
             "available" : foodItem.isAvailable
         ] as [String : Any]
         self.ref.child("FoodItemsCafe")
+            .child(foodItem.category)
             .childByAutoId()
             .setValue(categoryData){ (error, ref) in
                 if let err =  error{
@@ -167,5 +167,6 @@ extension AddItemViewController: UITableViewDelegate, UITableViewDataSource {
         btnDrop.setTitle("\(StoreHandler.categoryCollection[indexPath.row].categoryName)", for: .normal)
         animate(toogle: false, type: btnDrop)
         tempFoodItem.category = StoreHandler.categoryCollection[indexPath.row].categoryName
-    }   
+    }
+    
 }
