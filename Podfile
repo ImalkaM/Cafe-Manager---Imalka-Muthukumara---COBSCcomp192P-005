@@ -12,6 +12,7 @@ pod 'Firebase/Firestore'
 pod 'Firebase/Database'
 pod 'Kingfisher'
 pod 'Loaf'
+pod 'Firebase/Storage'
 
   target 'Cafe-ManagerTests' do
     inherit! :search_paths
