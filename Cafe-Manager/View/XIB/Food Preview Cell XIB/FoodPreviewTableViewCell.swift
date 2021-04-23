@@ -36,7 +36,7 @@ class FoodPreviewTableViewCell: UITableViewCell {
     func setupView(foodItem:FoodItem){
         foodNameLabel.text = foodItem.foodName
         descriptionLabel.text = foodItem.foodDescription
-        priceLabel.text = "RS.\(String(foodItem.foodPrice))"
+        priceLabel.text = "RSs.\(String(foodItem.foodPrice))"
         imageFood.kf.setImage(with: URL(string: foodItem.image))
         toggleSwitch.isOn = foodItem.isAvailable
         

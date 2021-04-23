@@ -100,6 +100,7 @@ extension StoreViewController{
                                     foodItems.foodPrice = itemInfo["price"] as! Double
                                     foodItems.discount = itemInfo["discount"] as! Int
                                     foodItems.isAvailable = itemInfo["available"] as! Bool
+                                    foodItems.image = itemInfo["imageURL"] as! String
                                     
                                     self.foodItemArray.append(foodItems)
                                     

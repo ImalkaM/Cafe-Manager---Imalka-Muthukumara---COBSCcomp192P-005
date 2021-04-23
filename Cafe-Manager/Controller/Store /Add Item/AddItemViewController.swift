@@ -24,6 +24,9 @@ class AddItemViewController: UIViewController {
     
     @IBOutlet weak var addButton: UIButton!
     
+    
+    @IBOutlet weak var imagepicked: UIImageView!
+    
     var tempFoodItem:FoodItem = FoodItem(id: "", foodName: "", foodDescription: "", category: "", foodPrice: 0.0, discount: 0, image: "", isAvailable: true)
     
     
@@ -61,13 +64,36 @@ class AddItemViewController: UIViewController {
                 return
                 
             }
-            tempFoodItem.isAvailable = avaialableButton.isOn
-            tempFoodItem.foodName = name
-            tempFoodItem.foodDescription = description
-            tempFoodItem.discount = Int(dicountField.text ?? "") ?? 0
-            tempFoodItem.foodPrice = Double(price) ?? 0
+            guard let im: UIImage = imagepicked.image else { return }
+            guard let d: Data = im.jpegData(compressionQuality: 0.5) else { return }
+
+            let md = StorageMetadata()
+            md.contentType = "image/png"
+
+            let f = "foodImage/" + UUID().uuidString + ".jpg"
+            let ref = Storage.storage().reference().child(f)
+
+            ref.putData(d, metadata: md) { (metadata, error) in
+                if error == nil {
+                    ref.downloadURL(completion: { (url, error) in
+                        self.tempFoodItem.image = url?.absoluteString ?? ""
+                        self.tempFoodItem.isAvailable = self.avaialableButton.isOn
+                        self.tempFoodItem.foodName = name
+                        self.tempFoodItem.foodDescription = description
+                        self.tempFoodItem.discount = Int(self.dicountField.text ?? "") ?? 0
+                        self.tempFoodItem.foodPrice = Double(price) ?? 0
+                        //tempFoodItem.image = imagepicked.
+                        
+                        self.createFoodItem(foodItem: self.tempFoodItem)
+                        print("Done, url is \(String(describing: url))")
+                    })
+                }else{
+                    print("error \(String(describing: error))")
+                }
+            }
             
-            createFoodItem(foodItem: tempFoodItem)
+            
+           
         }
     }
     
@@ -126,13 +152,25 @@ class AddItemViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    @IBAction func selectImagePressed(_ sender: UIButton) {
+        
+        let imagePickerVC = UIImagePickerController()
+        imagePickerVC.sourceType = .photoLibrary
+        imagePickerVC.delegate = self
+        present(imagePickerVC, animated: true)
+        
+        
+    }
+    
     func createFoodItem(foodItem: FoodItem){
         let categoryData = [
             "foodName" : foodItem.foodName,
             "foodDescription" : foodItem.foodDescription,
             "price" : foodItem.foodPrice,
             "discount" : foodItem.discount,
-            "available" : foodItem.isAvailable
+            "available" : foodItem.isAvailable,
+            "imageURL" : foodItem.image
         ] as [String : Any]
         self.ref.child("FoodItemsCafe")
             .child(foodItem.category)
@@ -167,6 +205,21 @@ extension AddItemViewController: UITableViewDelegate, UITableViewDataSource {
         btnDrop.setTitle("\(StoreHandler.categoryCollection[indexPath.row].categoryName)", for: .normal)
         animate(toogle: false, type: btnDrop)
         tempFoodItem.category = StoreHandler.categoryCollection[indexPath.row].categoryName
+    }
+    
+}
+
+extension AddItemViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+       picker.dismiss(animated: true, completion: nil)
+        
+        
+        if let image = info[.originalImage] as? UIImage{
+            
+            imagepicked.image = image
+        }
+        
     }
     
 }
