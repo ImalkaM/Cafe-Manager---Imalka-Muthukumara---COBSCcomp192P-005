@@ -39,7 +39,10 @@ struct K {
         static let nibNameCategoryTable = "FoodPreviewTableViewCell"
         static let categoryTableCell = "FoodPCell"
     }
-    
+    struct orderTable {
+        static let nibNameOrderTable = "OrderTableViewCell"
+        static let orderTableCell = "OrderPCell"
+    }
 }
 
 

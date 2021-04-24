@@ -13,6 +13,7 @@ pod 'Firebase/Database'
 pod 'Kingfisher'
 pod 'Loaf'
 pod 'Firebase/Storage'
+pod 'SwiftDate'
 
   target 'Cafe-ManagerTests' do
     inherit! :search_paths
