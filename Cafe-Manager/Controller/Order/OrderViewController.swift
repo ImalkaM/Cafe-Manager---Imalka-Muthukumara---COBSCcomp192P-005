@@ -17,6 +17,8 @@ class OrderViewController: UIViewController {
     var allOrders:[Order] = []
     var orderUsers:[String] = []
     
+    var todayOrdersTest:[OrderTest] = []
+    
     var date:Double = 0.0
     var datenow:String = ""
     var currentDate:Date = Date()
@@ -34,7 +36,7 @@ class OrderViewController: UIViewController {
 
 extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        todayOrders.count
+        todayOrdersTest.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,11 +45,150 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
 //        let category = categoryWiseFoods[indexPath.section]
 //        let drink = category.items[indexPath.row]
 //
-        cell.setupUI(category: todayOrders[indexPath.row])
+        cell.setupUI(category: todayOrdersTest[indexPath.row])
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == orderTable{
+            performSegue(withIdentifier: K.OrderTableToOrderDetailsSeauge, sender: self)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == K.OrderTableToOrderDetailsSeauge{
+            if let indexPath = orderTable.indexPathForSelectedRow {
+                let orderDescriptionViewController = segue.destination as! OrderDetailsViewController
+                orderDescriptionViewController.setupFoodDescritionView(orderItem: todayOrdersTest[indexPath.row])
+            }
+        }
+        
+    }
+
+    
+}
+
+extension OrderViewController{
+    
+    func getOrders(){
+
+        self.todayOrders.removeAll()
+
+        for key in orderUsers{
+            self.ref.child("orders").child(key)
+                .observe(.value) { (snapshot) in
+                    if let data = snapshot.value{
+                        if let orders = data as? [String:Any]{
+                            for singleOrder in orders{
+                                if let orderInfo = singleOrder.value as? [String:Any]{
+                                    var placedOrder = Order()
+                                    placedOrder.orderID = singleOrder.key
+                                    placedOrder.orderStatus = orderInfo["status"] as! String
+                                    placedOrder.custName = orderInfo["customerName"] as! String
+                                   //
+                                    if let orderItems = orderInfo["orderItems"] as? [Any]{
+                                        for item in orderItems{
+
+                                           if let itemInfo = item as? [String:Any]{
+                                            placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
+                                            placedOrder.quantity = itemInfo["qunatity"] as! Int
+                                            placedOrder.foodName = itemInfo["foodName"] as! String
+                                            self.date = itemInfo["timestamp"] as! Double
+                                            self.datenow = self.convertTimestampToString(serverTimestamp: self.date)
+                                            self.currentDate = self.convertTimestampToDate(serverTimestamp: self.datenow)
+                                            placedOrder.date = self.currentDate
+                                            }
+                                        }
+                                    }
+                                    if self.currentDate.compare(.isToday){
+                                        self.todayOrders.append(placedOrder)
+                                        print(placedOrder)
+                                       
+                                    }
+                                    self.allOrders.append(placedOrder)
+                                }
+                               self.orderTable.reloadData()
+                            }
+                        }
+                    }
+                }
+        }
+
+    }
+    
+    func getOrdersTest(){
+        var tempId = 0
+        self.todayOrdersTest.removeAll()
+
+        for key in orderUsers{
+            self.ref.child("orders").child(key)
+                .observe(.value) { (snapshot) in
+                    if let data = snapshot.value{
+                        if let orders = data as? [String:Any]{
+                            for singleOrder in orders{
+                                if let orderInfo = singleOrder.value as? [String:Any]{
+                                    var placedOrder = OrderTest()
+                                    var placedSingleFoodInfo = FoodItemOrder()
+                                    placedOrder.orderID = singleOrder.key
+                                    placedOrder.orderStatus = orderInfo["status"] as! String
+                                    placedOrder.custName = orderInfo["customerName"] as! String
+                                   //
+                                    if let orderItems = orderInfo["orderItems"] as? [Any]{
+                                        for item in orderItems{
+
+                                           if let itemInfo = item as? [String:Any]{
+                                            placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
+                                            placedSingleFoodInfo.quantity = itemInfo["qunatity"] as! Int
+                                            placedSingleFoodInfo.foodName = itemInfo["foodName"] as! String
+                                            placedSingleFoodInfo.foodPrice = itemInfo["foodPrice"] as! Double
+                                            self.date = itemInfo["timestamp"] as! Double
+                                            self.datenow = self.convertTimestampToString(serverTimestamp: self.date)
+                                            self.currentDate = self.convertTimestampToDate(serverTimestamp: self.datenow)
+                                            placedOrder.date = self.currentDate
+                                            placedOrder.foodArray.append(placedSingleFoodInfo)
+                                            }
+                                        }
+                                    }
+                                    if self.currentDate.compare(.isToday){
+                                        tempId += 1
+                                        self.todayOrdersTest.append(placedOrder)
+                                        print(placedOrder)
+                                       
+                                    }
+                                   // self.allOrders.append(placedOrder)
+                                }
+                               self.orderTable.reloadData()
+                            }
+                        }
+                    }
+                }
+        }
+
+    }
+    
+    
+    func getOrderUsers(){
+        
+        ref.child("orders").observe(.value, with: {(snapshot) in
+            if let data = snapshot.value{
+                
+                if let userData = data as? [String:Any]{
+                    
+                    for key in userData.keys{
+                        self.orderUsers.append(key)
+
+                    }
+                   // self.getOrders()
+                    self.getOrdersTest()
+                   // print(self.orderUsers)
+                }
+                
+            }
+           
+        })
+
+    }
     
     func convertTimestampToString(serverTimestamp: Double) -> String {
         let x = serverTimestamp / 1000
@@ -69,97 +210,5 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
         
         
         return formatter.date(from: serverTimestamp as String) ?? Date()
-    }
-    
-}
-
-extension OrderViewController{
-    
-    func getOrders(){
-
-        self.todayOrders.removeAll()
-
-        for key in orderUsers{
-            self.ref.child("orders").child(key)
-                .observe(.value) { (snapshot) in
-                    if let data = snapshot.value{
-                        if let orders = data as? [String:Any]{
-                            for singleOrder in orders{
-                                if let orderInfo = singleOrder.value as? [String:Any]{
-                                    var placedOrder = Order()
-                                    placedOrder.orderID = singleOrder.key
-                                    placedOrder.orderStatus = orderInfo["status"] as! String
-                                   //
-                                    if let orderItems = orderInfo["orderItems"] as? [Any]{
-                                        for item in orderItems{
-
-                                           if let itemInfo = item as? [String:Any]{
-                                            placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
-                                            placedOrder.quantity = itemInfo["qunatity"] as! Int
-                                            placedOrder.foodName = itemInfo["foodName"] as! String
-                                            self.date = itemInfo["timestamp"] as! Double
-                                            self.datenow = self.convertTimestampToString(serverTimestamp: self.date)
-                                            self.currentDate = self.convertTimestampToDate(serverTimestamp: self.datenow)
-                                            placedOrder.date = self.currentDate
-                                            placedOrder.custName = key
-                                            }
-                                        }
-                                    }
-                                    if self.currentDate.compare(.isToday){
-                                        self.todayOrders.append(placedOrder)
-                                       
-                                    }
-                                    self.allOrders.append(placedOrder)
-                                }
-                               self.orderTable.reloadData()
-                            }
-                        }
-                    }
-                }
-        }
-
-    }
-    
-    func getOrderUsers(){
-        
-        ref.child("orders").observe(.value, with: {(snapshot) in
-            if let data = snapshot.value{
-                
-                if let userData = data as? [String:Any]{
-                    
-                    for key in userData.keys{
-                        self.orderUsers.append(key)
-
-                    }
-                    self.getOrders()
-                   // print(self.orderUsers)
-                }
-                
-            }
-           
-        })
-        
-        
-//        ref.child("users")
-//            .child(email .replacingOccurrences(of: "@", with: "_")
-//                    .replacingOccurrences(of: ".", with: "_")).observe(.value, with: {(snapshot) in
-//                        if snapshot.hasChildren(){
-//                            if let data = snapshot.value{
-//
-//                                if let userData = data as? [String:String]{
-//                                    let user = User(name: userData["userName"]!,
-//                                                    email: userData["userEmail"]!,
-//                                                    password: userData["userPassword"]!,
-//                                                    phonenumber: userData["userPhone"]!)
-//
-//
-//                                    let sessionManager = SessionManager()
-//                                    sessionManager.saveUserLogin(user: user)
-//                                }
-//                            }
-//                        }else{
-//                            Loaf("User not found!", state: .error, sender: self).show()
-//                        }
-//                    })
     }
 }

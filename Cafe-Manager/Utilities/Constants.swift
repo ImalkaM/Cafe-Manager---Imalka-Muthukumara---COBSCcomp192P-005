@@ -21,6 +21,7 @@ struct K {
     static let FooddetailsToHomeUnwindSeauge = "FoodDetailsToHome"
     static let launchToHomeSeauge = "LaunchToHome"
     static let launchToLogin = "LaunchToLogin"
+    static let OrderTableToOrderDetailsSeauge = "OrderToOrderDetails"
     
     
     
@@ -43,6 +44,13 @@ struct K {
         static let nibNameOrderTable = "OrderTableViewCell"
         static let orderTableCell = "OrderPCell"
     }
+    struct orderDetailsTable {
+        static let nibNameOrderDetailsTable = "OrderDetailsTableViewCell"
+        static let orderDetailsTableCell = "OrderDetailCell"
+    }
+    
+    
+    
 }
 
 

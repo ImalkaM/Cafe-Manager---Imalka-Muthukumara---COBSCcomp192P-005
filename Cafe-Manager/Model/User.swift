@@ -43,14 +43,34 @@ struct Category{
 
 struct Order{
     var orderID: String = ""
+    var orderStatus:String = "NEW"
     var custName:String = ""
+    var orderTotal:Double = 0.0
+    
     var foodName:String = ""
     var quantity:Int = 0
     var foodPrice:Double = 0.0
-    var orderStatus:String = "NEW"
     var date:Date = Date()
-    var orderTotal:Double = 0.0
+   
 }
+struct OrderTest{
+    var orderID: String = ""
+    var orderStatus:String = "NEW"
+    var custName:String = ""
+    var orderTotal:Double = 0.0
+    var date:Date = Date()
+    var foodArray:[FoodItemOrder] = []
+   
+}
+
+struct FoodItemOrder {
+    var foodName:String = ""
+    var quantity:Int = 0
+    var foodPrice:Double = 0.0
+    
+    
+}
+
 
 struct CategoryItems {
    let name : String

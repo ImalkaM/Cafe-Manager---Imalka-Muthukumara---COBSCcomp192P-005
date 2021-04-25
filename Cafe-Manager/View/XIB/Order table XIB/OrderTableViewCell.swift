@@ -24,7 +24,7 @@ class OrderTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func setupUI(category:Order){
+    func setupUI(category:OrderTest){
         cusNameLabel.text = category.custName
         orderIdLabel.text = category.orderID
     }

@@ -19,6 +19,9 @@
 		AF75B36B2633CCB800DF7789 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75B3692633CCB800DF7789 /* OrderTableViewCell.swift */; };
 		AF75B36C2633CCB800DF7789 /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF75B36A2633CCB800DF7789 /* OrderTableViewCell.xib */; };
 		AF75B3752633CFD500DF7789 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75B3742633CFD500DF7789 /* OrderViewController.swift */; };
+		AF75B399263466D200DF7789 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75B398263466D200DF7789 /* OrderDetailsViewController.swift */; };
+		AF75B3A3263512F000DF7789 /* OrderDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75B3A1263512F000DF7789 /* OrderDetailsTableViewCell.swift */; };
+		AF75B3A4263512F100DF7789 /* OrderDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF75B3A2263512F000DF7789 /* OrderDetailsTableViewCell.xib */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -72,6 +75,9 @@
 		AF75B3692633CCB800DF7789 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		AF75B36A2633CCB800DF7789 /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
 		AF75B3742633CFD500DF7789 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		AF75B398263466D200DF7789 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
+		AF75B3A1263512F000DF7789 /* OrderDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		AF75B3A2263512F000DF7789 /* OrderDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 		AF75B2972627FFED00DF7789 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				AF75B3A0263512CF00DF7789 /* Order Detail XIB */,
 				AF75B3682633CC9500DF7789 /* Order table XIB */,
 				AF75B30C26306A7100DF7789 /* Food Preview Cell XIB */,
 				AF75B2982627FFF600DF7789 /* Category Cell XIB */,
@@ -211,6 +218,23 @@
 				AF75B3742633CFD500DF7789 /* OrderViewController.swift */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		AF75B397263466B300DF7789 /* Order details */ = {
+			isa = PBXGroup;
+			children = (
+				AF75B398263466D200DF7789 /* OrderDetailsViewController.swift */,
+			);
+			path = "Order details";
+			sourceTree = "<group>";
+		};
+		AF75B3A0263512CF00DF7789 /* Order Detail XIB */ = {
+			isa = PBXGroup;
+			children = (
+				AF75B3A1263512F000DF7789 /* OrderDetailsTableViewCell.swift */,
+				AF75B3A2263512F000DF7789 /* OrderDetailsTableViewCell.xib */,
+			);
+			path = "Order Detail XIB";
 			sourceTree = "<group>";
 		};
 		AF923C1D26267F55001AD12C = {
@@ -281,6 +305,7 @@
 		AF923C7E26268AA1001AD12C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AF75B397263466B300DF7789 /* Order details */,
 				AF75B3732633CFAF00DF7789 /* Order */,
 				AF75B22826274C8000DF7789 /* Store  */,
 				AF923C9B2626B525001AD12C /* Forgot Password */,
@@ -456,6 +481,7 @@
 				AF75B31026306AB900DF7789 /* FoodPreviewTableViewCell.xib in Resources */,
 				AF923CA52626B6FD001AD12C /* GoogleService-Info.plist in Resources */,
 				AF75B29C2628001300DF7789 /* CategoryTableViewCell.xib in Resources */,
+				AF75B3A4263512F100DF7789 /* OrderDetailsTableViewCell.xib in Resources */,
 				AF923C3626267F58001AD12C /* LaunchScreen.storyboard in Resources */,
 				AF923C3326267F58001AD12C /* Assets.xcassets in Resources */,
 				AF75B36C2633CCB800DF7789 /* OrderTableViewCell.xib in Resources */,
@@ -589,6 +615,7 @@
 			files = (
 				AF923C8426268E7E001AD12C /* SignInViewController.swift in Sources */,
 				AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */,
+				AF75B399263466D200DF7789 /* OrderDetailsViewController.swift in Sources */,
 				AF923C9D2626B541001AD12C /* ForgotPasswordViewController.swift in Sources */,
 				AF75B36B2633CCB800DF7789 /* OrderTableViewCell.swift in Sources */,
 				AF923C972626A546001AD12C /* CustomUI.swift in Sources */,
@@ -601,6 +628,7 @@
 				AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */,
 				AF75B22A26274C9D00DF7789 /* StoreViewController.swift in Sources */,
 				AF923CC62626BC23001AD12C /* SessionManager.swift in Sources */,
+				AF75B3A3263512F000DF7789 /* OrderDetailsTableViewCell.swift in Sources */,
 				AF75B29B2628001300DF7789 /* CategoryTableViewCell.swift in Sources */,
 				AF923CC82626BC23001AD12C /* ValidatorFields.swift in Sources */,
 				AF923CCE2626BD0A001AD12C /* User.swift in Sources */,
