@@ -27,6 +27,8 @@ class FoodPreviewTableViewCell: UITableViewCell {
     var delegate: foodAvailableDelegate!
     var indexPath: IndexPath!
     
+    var foodItemTemp:FoodItem = FoodItem()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,11 +43,11 @@ class FoodPreviewTableViewCell: UITableViewCell {
     
     @IBAction func switchToggled(_ sender: UISwitch) {
         tempAvialable.toggle()
-        delegate.availableButtonToggled(at: indexPath, isOn: tempAvialable)
+        delegate.availableButtonToggled(at: indexPath, isOn: tempAvialable, foodItem: foodItemTemp)
     }
     
     
-    func setupView(foodItem:FoodItem){
+    func setupView(foodItem:FoodItem, categoryName:String){
         foodNameLabel.text = foodItem.foodName
         descriptionLabel.text = foodItem.foodDescription
         priceLabel.text = "RSs.\(String(foodItem.foodPrice))"
@@ -60,10 +62,15 @@ class FoodPreviewTableViewCell: UITableViewCell {
             discountContainer.isHidden = true
             discountLabel.text = ""
         }
+        foodItemTemp.id = foodItem.id
+        foodItemTemp.category = categoryName
+        
     }
+    
+    
     
 }
 
 protocol foodAvailableDelegate {
-    func availableButtonToggled(at indexPath: IndexPath,isOn:Bool)
+    func availableButtonToggled(at indexPath: IndexPath,isOn:Bool,foodItem:FoodItem)
 }

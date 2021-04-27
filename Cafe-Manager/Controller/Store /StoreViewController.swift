@@ -16,6 +16,7 @@ class StoreViewController: UIViewController{
     var categoryCollection:[Category] = [Category(categoryID: "Main", categoryName: "fruits"),Category(categoryID: "sda", categoryName: "ssadad")]
     
     var categoryWiseFoods:[CategoryItems] = []
+    var tempCatName:String = ""
     
     @IBOutlet weak var previewBtn: UIButton!
     @IBOutlet weak var menuBtn: UIButton!
@@ -56,13 +57,10 @@ class StoreViewController: UIViewController{
 
 extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
     
-    func availableButtonToggled(at indexPath: IndexPath,isOn: Bool) {
-        
-        self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable = isOn
-        print(self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable)
-        //self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable = isOn
-       // print(self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable)
-        ref.child("FoodItemsCafe").child(categoryWiseFoods[indexPath.row].name).child(categoryWiseFoods[indexPath.row].items[indexPath.row].id).child("available").setValue(isOn){
+    func availableButtonToggled(at indexPath: IndexPath,isOn: Bool, foodItem: FoodItem) {
+       
+        print(self.categoryWiseFoods[indexPath.section].name)
+        ref.child("FoodItemsCafe").child(self.categoryWiseFoods[indexPath.section].name).child(foodItem.id).child("available").setValue(isOn){
             (error:Error?, ref:DatabaseReference) in
             if let error = error {
                 //error
@@ -85,7 +83,10 @@ extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
         let category = categoryWiseFoods[indexPath.section]
         let singleCatItem = category.items[indexPath.row]
         
-        cell.setupView(foodItem: singleCatItem)
+        let sectionHeaderView = previewTable.headerView(forSection: indexPath.section)
+        let sectionTitle = sectionHeaderView?.textLabel?.text ?? ""
+        
+        cell.setupView(foodItem: singleCatItem, categoryName: sectionTitle)
         cell.indexPath = indexPath
         cell.delegate = self
         
@@ -158,7 +159,40 @@ extension StoreViewController{
             .observeSingleEvent(of:.value) { (snapshot) in
                
                 self.categoryWiseFoods = []
-                if let categorys = snapshot.value as? [String: Any]  sour
+                if let categorys = snapshot.value as? [String: Any] {
+                    
+                    for singlecategory in categorys {
+                        print(singlecategory.key)//cat name
+                        if let singleFoodItem = singlecategory.value as? [String: Any] {
+                            for foodItemDetail in singleFoodItem {
+                                var foodItems = FoodItem()
+                                if let itemInfo = foodItemDetail.value as? [String:Any]{
+                                   
+                                    foodItems.id = foodItemDetail.key
+                                    foodItems.foodName = itemInfo["foodName"] as! String
+                                    foodItems.foodDescription = itemInfo["foodDescription"] as! String
+                                    foodItems.foodPrice = itemInfo["price"] as! Double
+                                    foodItems.discount = itemInfo["discount"] as! Int
+                                    foodItems.isAvailable = itemInfo["available"] as! Bool
+                                    foodItems.image = itemInfo["imageURL"] as! String
+                                    
+                                    print(foodItems)
+                                   
+                                }
+                                //print(foodItemDetails.key)//single item key
+                               
+                                self.foodItemArray.append(foodItems)
+                                
+                            }
+                           
+                        }
+                        self.categoryWiseFoods.append(CategoryItems(name: singlecategory.key, items: self.foodItemArray))
+                        self.foodItemArray = []
+                    }
+                    DispatchQueue.main.async {
+                                            self.previewTable.reloadData()
+                                        }
+                }
             }
     }
 //    func getFoodItemsadss(){
