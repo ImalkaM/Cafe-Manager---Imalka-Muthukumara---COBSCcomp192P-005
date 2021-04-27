@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="433" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Mym-Dx-RxJ">
-                        <rect key="frame" x="10" y="36" width="228" height="52.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Mym-Dx-RxJ">
+                        <rect key="frame" x="10" y="28.5" width="228" height="67.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Customer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiy-4f-Dnx">
                                 <rect key="frame" x="0.0" y="0.0" width="124" height="20.5"/>
@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="order Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqQ-4j-RBK">
-                                <rect key="frame" x="0.0" y="35.5" width="50.5" height="17"/>
+                                <rect key="frame" x="0.0" y="50.5" width="50.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -43,7 +43,12 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJB-AY-nGc">
                                         <rect key="frame" x="18" y="25" width="44" height="30"/>
-                                        <state key="normal" title="Reject"/>
+                                        <state key="normal" title="Reject">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rejectButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kb3-PM-EaP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
@@ -64,10 +69,15 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwe-zw-uLu">
                                         <rect key="frame" x="15.5" y="25" width="49" height="30"/>
-                                        <state key="normal" title="Accept"/>
+                                        <state key="normal" title="Accept">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="acceptButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ta4-mF-YtW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="CdK-0G-WzE"/>
                                     <constraint firstAttribute="width" constant="80" id="F2P-NM-Thq"/>
@@ -93,8 +103,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="acceptButonContainer" destination="7dU-yP-doa" id="1ui-ia-p80"/>
+                <outlet property="acceptButton" destination="Qwe-zw-uLu" id="V8T-wF-7yH"/>
                 <outlet property="cusNameLabel" destination="hiy-4f-Dnx" id="KqR-uX-p3n"/>
                 <outlet property="orderIdLabel" destination="RqQ-4j-RBK" id="t0Z-9D-9Mr"/>
+                <outlet property="rejectButtoncobtainer" destination="I0O-FE-DOI" id="E7q-Qz-0tK"/>
             </connections>
             <point key="canvasLocation" x="219.56521739130437" y="135.9375"/>
         </tableViewCell>
