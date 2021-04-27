@@ -27,7 +27,7 @@ class OrderDetailsTableViewCell: UITableViewCell {
     func setupUI(singleOrderDetails:FoodItemOrder){
         foodNameLabel.text = singleOrderDetails.foodName
         priceLabel.text = String(singleOrderDetails.foodPrice)
-        qtyLabel.text = String(singleOrderDetails.quantity)
+        qtyLabel.text = ("\(String(singleOrderDetails.quantity)) x")
         
     }
     

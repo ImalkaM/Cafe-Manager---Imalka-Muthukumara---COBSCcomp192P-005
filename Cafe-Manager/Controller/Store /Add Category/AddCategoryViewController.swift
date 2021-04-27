@@ -24,6 +24,7 @@ class AddCategoryViewController: UIViewController {
         ref = Database.database().reference()
         setupCustomUI()
         categoryTable.register(UINib(nibName: K.category.nibNameCategoryTable, bundle: nil), forCellReuseIdentifier: K.category.categoryTableCell)
+        StoreHandler.getCategorys(ref: ref)
        // getCategorys()
     }
     
@@ -64,24 +65,43 @@ class AddCategoryViewController: UIViewController {
             }
     }
     
-    func getCategorys(){
-        
-        self.ref.child("category").observe(.value) { (snapshot) in
-            if let data = snapshot.value{
-                if let orders = data as? [String:Any]{
-                   StoreHandler.categoryCollection.removeAll()
-                    for singleCategory in orders{
-                        if let categoryInfo = singleCategory.value as? [String:Any]{
-                            self.category.categoryName = categoryInfo["categoryName"] as! String
-                            self.category.categoryID = singleCategory.key
-                            StoreHandler.categoryCollection.append(self.category)
-                        }
-                    }
-                    self.categoryTable.reloadData()
-                }
-            }
-        }
-    }
+//        func getCategorys(){
+//
+//            self.ref.child("category").observe(.value) { (snapshot) in
+//                if let data = snapshot.value{
+//                    if let orders = data as? [String:Any]{
+//                       StoreHandler.categoryCollection.removeAll()
+//                        for singleCategory in orders{
+//                            if let categoryInfo = singleCategory.value as? [String:Any]{
+//                                self.category.categoryName = categoryInfo["categoryName"] as! String
+//                                self.category.categoryID = singleCategory.key
+//                                StoreHandler.categoryCollection.append(self.category)
+//                            }
+//                        }
+//                        self.categoryTable.reloadData()
+//                    }
+//                }
+//            }
+//        }
+    
+//    func getCategorys(){
+//
+//        self.ref.child("category").observe(.value) { (snapshot) in
+//            if let data = snapshot.value{
+//                if let orders = data as? [String:Any]{
+//                   StoreHandler.categoryCollection.removeAll()
+//                    for singleCategory in orders{
+//                        if let categoryInfo = singleCategory.value as? [String:Any]{
+//                            self.category.categoryName = categoryInfo["categoryName"] as! String
+//                            self.category.categoryID = singleCategory.key
+//                            StoreHandler.categoryCollection.append(self.category)
+//                        }
+//                    }
+//                    self.categoryTable.reloadData()
+//                }
+//            }
+//        }
+//    }
     
     func deleteCategory(index:Int){
         
@@ -117,7 +137,12 @@ extension AddCategoryViewController:UITableViewDelegate{
             StoreHandler.categoryCollection.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             StoreHandler.categoryCollection.removeAll()
-            getCategorys()
+            StoreHandler.getCategorys(ref: ref)
+            DispatchQueue.main.async {
+                self.categoryTable.reloadData()
+            }
+        
+           //getCategorys()
             
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

@@ -22,6 +22,7 @@
 		AF75B399263466D200DF7789 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75B398263466D200DF7789 /* OrderDetailsViewController.swift */; };
 		AF75B3A3263512F000DF7789 /* OrderDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75B3A1263512F000DF7789 /* OrderDetailsTableViewCell.swift */; };
 		AF75B3A4263512F100DF7789 /* OrderDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF75B3A2263512F000DF7789 /* OrderDetailsTableViewCell.xib */; };
+		AF877457263797F0005C9236 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF877456263797F0005C9236 /* Category.swift */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		AF75B398263466D200DF7789 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		AF75B3A1263512F000DF7789 /* OrderDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		AF75B3A2263512F000DF7789 /* OrderDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		AF877456263797F0005C9236 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				AF923CCD2626BD0A001AD12C /* User.swift */,
+				AF877456263797F0005C9236 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				AF923CC82626BC23001AD12C /* ValidatorFields.swift in Sources */,
 				AF923CCE2626BD0A001AD12C /* User.swift in Sources */,
 				AF75B3752633CFD500DF7789 /* OrderViewController.swift in Sources */,
+				AF877457263797F0005C9236 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

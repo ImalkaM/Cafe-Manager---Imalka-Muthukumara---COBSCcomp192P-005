@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class StoreViewController: UIViewController {
+class StoreViewController: UIViewController{
     var ref = Database.database().reference()
     
     var category:Category = Category(categoryID: "", categoryName: "")
@@ -25,10 +25,14 @@ class StoreViewController: UIViewController {
     
     var foodItemArray:[FoodItem] = []
     
+    private let refreshControl = UIRefreshControl()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getCategorys()
+        //getCategorys()
         
+       // getFoodItemsadss()
         //getFoodItems()
         ref = Database.database().reference()
         previewTable.register(UINib(nibName: K.previewTable.nibNameCategoryTable, bundle: nil), forCellReuseIdentifier: K.previewTable.categoryTableCell)
@@ -37,9 +41,10 @@ class StoreViewController: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            self.previewTable.reloadData()
-        }
+        //getCategorys()
+        //getFoodItems()
+        getFoodItemsnew()
+       
     }
     func setupCustomUI(){
         CustomUI.setupAuthButton(btnCustom: previewBtn)
@@ -49,7 +54,26 @@ class StoreViewController: UIViewController {
     
 }
 
-extension StoreViewController:UITableViewDataSource{
+extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
+    
+    func availableButtonToggled(at indexPath: IndexPath,isOn: Bool) {
+        
+        self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable = isOn
+        print(self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable)
+        //self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable = isOn
+       // print(self.categoryWiseFoods[indexPath.row].items[indexPath.row].isAvailable)
+        ref.child("FoodItemsCafe").child(categoryWiseFoods[indexPath.row].name).child(categoryWiseFoods[indexPath.row].items[indexPath.row].id).child("available").setValue(isOn){
+            (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                //error
+            } else {
+                //self.getFoodItems()
+                //self.foodItemArray.remove(at: indexPath.row)
+            }
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryWiseFoods[section].items.count
     }
@@ -59,12 +83,14 @@ extension StoreViewController:UITableViewDataSource{
         let cell = previewTable.dequeueReusableCell(withIdentifier: K.previewTable.categoryTableCell, for: indexPath) as! FoodPreviewTableViewCell
         
         let category = categoryWiseFoods[indexPath.section]
-        let drink = category.items[indexPath.row]
+        let singleCatItem = category.items[indexPath.row]
         
-        cell.setupView(foodItem: drink)
+        cell.setupView(foodItem: singleCatItem)
+        cell.indexPath = indexPath
+        cell.delegate = self
         
         return cell
-
+        
         
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -78,69 +104,122 @@ extension StoreViewController:UITableViewDataSource{
 
 extension StoreViewController{
     
-    func getFoodItems(){
+//    func getFoodItems(){
+//
+//        self.categoryWiseFoods = []
+//
+//        for categorys in StoreHandler.categoryCollection{
+//
+//            self.ref.child("FoodItemsCafe").child(categorys.categoryName)
+//                .observeSingleEvent(of:.value) { (snapshot) in
+//                    print(categorys.categoryName)
+//                    self.foodItemArray = []
+//                    self.categoryWiseFoods = []
+//                    if let data = snapshot.value {
+//
+//                        if let foodItems = data as? [String:Any]{
+//                            // print(foodItems.keys)
+//                            for singleItem in foodItems{
+//                                //print(singleItem)
+//                                if let itemInfo = singleItem.value as? [String:Any]{
+//                                    var foodItems = FoodItem()
+//                                    foodItems.id = singleItem.key
+//                                    foodItems.foodName = itemInfo["foodName"] as! String
+//                                    foodItems.foodDescription = itemInfo["foodDescription"] as! String
+//                                    foodItems.foodPrice = itemInfo["price"] as! Double
+//                                    foodItems.discount = itemInfo["discount"] as! Int
+//                                    foodItems.isAvailable = itemInfo["available"] as! Bool
+//                                    foodItems.image = itemInfo["imageURL"] as! String
+//
+//
+//                                    self.foodItemArray.append(foodItems)
+//
+//                                }
+//
+//                            }
+//                                self.categoryWiseFoods.append(CategoryItems(name: categorys.categoryName, items: self.foodItemArray))
+//
+//                        }
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.previewTable.reloadData()
+//                    }
+//                }
+//
+//        }
+//    }
+    func getFoodItemsnew(){
         
-        //self.orders.removeAll()
-        for categorys in StoreHandler.categoryCollection{
-            
-            self.ref.child("FoodItemsCafe").child(categorys.categoryName)
-                .observe(.value) { (snapshot) in
-                    self.foodItemArray = []
-                    if let data = snapshot.value {
-                        
-                        if let foodItems = data as? [String:Any]{
-                            // print(foodItems.keys)
-                            for singleItem in foodItems{
-                                //print(singleItem)
-                                if let itemInfo = singleItem.value as? [String:Any]{
-                                    var foodItems = FoodItem()
-                                    foodItems.id = singleItem.key
-                                    foodItems.foodName = itemInfo["foodName"] as! String
-                                    foodItems.foodDescription = itemInfo["foodDescription"] as! String
-                                    foodItems.foodPrice = itemInfo["price"] as! Double
-                                    foodItems.discount = itemInfo["discount"] as! Int
-                                    foodItems.isAvailable = itemInfo["available"] as! Bool
-                                    foodItems.image = itemInfo["imageURL"] as! String
-                                    
-                                    self.foodItemArray.append(foodItems)
-                                    
-                                    //print(foodItems.foodName)
-                                    //foodItemArray.append(<#T##newElement: FoodItem##FoodItem#>)
-                                    //print(orderInfo)
-                                }
-                                
-                            }
-                            
-                            self.categoryWiseFoods.append(CategoryItems(name: categorys.categoryName, items: self.foodItemArray))
-                            
-                        }
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.previewTable.reloadData()
-                    }
-                   
-                }
-
-        }
-    }
-    func getCategorys(){
+        self.categoryWiseFoods = []
         
-        self.ref.child("category").observe(.value) { (snapshot) in
-            if let data = snapshot.value{
-                if let orders = data as? [String:Any]{
-                    StoreHandler.categoryCollection.removeAll()
-                    for singleCategory in orders{
-                        if let categoryInfo = singleCategory.value as? [String:Any]{
-                            self.category.categoryName = categoryInfo["categoryName"] as! String
-                            self.category.categoryID = singleCategory.key
-                            StoreHandler.categoryCollection.append(self.category)
-                        }
-                    }
-                    //  print(StoreHandler.categoryCollection)getFoodItems
-                    self.getFoodItems()
-                }
+        //for categorys in StoreHandler.categoryCollection{
+        
+        self.ref.child("FoodItemsCafe")
+            .observeSingleEvent(of:.value) { (snapshot) in
+               
+                self.categoryWiseFoods = []
+                if let categorys = snapshot.value as? [String: Any]  sour
             }
-        }
     }
+//    func getFoodItemsadss(){
+//
+//        self.categoryWiseFoods = []
+//
+//
+//            self.ref.child("FoodItemsCafe").observe(.value) { (snapshot) in
+//                    self.foodItemArray = []
+//
+//                    if let data = snapshot.value {
+//                        print(data)
+//
+//                        if let foodItems = data as? [String:Any]{
+//                            print(foodItems.values)
+//                            for singleItem in foodItems{
+//                                print(singleItem)
+//                                if let itemInfo = singleItem.value as? [String:Any]{
+//                                    var foodItems = FoodItem()
+//                                    foodItems.id = singleItem.key
+//                                    foodItems.foodName = itemInfo["foodName"] as! String
+//                                    foodItems.foodDescription = itemInfo["foodDescription"] as! String
+//                                    foodItems.foodPrice = itemInfo["price"] as! Double
+//                                    foodItems.discount = itemInfo["discount"] as! Int
+//                                    foodItems.isAvailable = itemInfo["available"] as! Bool
+//                                    foodItems.image = itemInfo["imageURL"] as! String
+//
+//
+//                                    self.foodItemArray.append(foodItems)
+//
+//                                }
+//
+//                            }
+////                                self.categoryWiseFoods.append(CategoryItems(name: categorys.categoryName, items: self.foodItemArray))
+//
+//                        }
+//                    }
+//                    DispatchQueue.main.async {
+//                        self.previewTable.reloadData()
+//                    }
+//                }
+//
+//        }
+    
+//    func getCategorys(){
+//
+//        self.ref.child("category").observe(.value) { (snapshot) in
+//            if let data = snapshot.value{
+//                if let orders = data as? [String:Any]{
+//                    StoreHandler.categoryCollection.removeAll()
+//                    for singleCategory in orders{
+//                        if let categoryInfo = singleCategory.value as? [String:Any]{
+//                            self.category.categoryName = categoryInfo["categoryName"] as! String
+//                            self.category.categoryID = singleCategory.key
+//                            StoreHandler.categoryCollection.append(self.category)
+//                        }
+//                    }
+//                    //  print(StoreHandler.categoryCollection)getFoodItems
+//                    self.getFoodItems()
+//                }
+//            }
+//        }
+//    }
 }

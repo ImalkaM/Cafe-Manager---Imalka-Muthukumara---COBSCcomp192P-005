@@ -22,6 +22,11 @@ class FoodPreviewTableViewCell: UITableViewCell {
     @IBOutlet weak var discountContainer: UIView!
     @IBOutlet weak var toggleSwitch: UISwitch!
     
+    var tempAvialable:Bool = false
+    
+    var delegate: foodAvailableDelegate!
+    var indexPath: IndexPath!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,16 +34,24 @@ class FoodPreviewTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        toggleSwitch.isOn = tempAvialable
         // Configure the view for the selected state
     }
+    
+    
+    @IBAction func switchToggled(_ sender: UISwitch) {
+        tempAvialable.toggle()
+        delegate.availableButtonToggled(at: indexPath, isOn: tempAvialable)
+    }
+    
     
     func setupView(foodItem:FoodItem){
         foodNameLabel.text = foodItem.foodName
         descriptionLabel.text = foodItem.foodDescription
         priceLabel.text = "RSs.\(String(foodItem.foodPrice))"
         imageFood.kf.setImage(with: URL(string: foodItem.image))
-        toggleSwitch.isOn = foodItem.isAvailable
+        //toggleSwitch.isOn = foodItem.isAvailable
+        tempAvialable = foodItem.isAvailable
         
         if foodItem.discount > 0 {
             discountContainer.isHidden = false
@@ -49,4 +62,8 @@ class FoodPreviewTableViewCell: UITableViewCell {
         }
     }
     
+}
+
+protocol foodAvailableDelegate {
+    func availableButtonToggled(at indexPath: IndexPath,isOn:Bool)
 }
