@@ -11,17 +11,23 @@ import Loaf
 import SwiftDate
 
 class OrderViewController: UIViewController {
-
+    
     var ref: DatabaseReference!
     var todayOrders:[Order] = []
     var allOrders:[Order] = []
     var orderUsers:[String] = []
     
-    var todayOrdersTest:[OrderTest] = []
+    var mobileBrand = [MobileBrand]()
     
+    var todayOrdersTest:[OrderTest] = []
+    var todayOrdersTestReady:[OrderTest] = []
+    
+    var categoryize:[OrderItemsCategory] = []
     var date:Double = 0.0
     var datenow:String = ""
     var currentDate:Date = Date()
+    
+    
     
     @IBOutlet weak var orderTable: UITableView!
     
@@ -30,25 +36,55 @@ class OrderViewController: UIViewController {
         super.viewDidLoad()
         ref = Database.database().reference()
         orderTable.register(UINib(nibName: K.orderTable.nibNameOrderTable, bundle: nil), forCellReuseIdentifier: K.orderTable.orderTableCell)
-        getOrderUsers()
+        //getOrderUsers()
+        getOrdersTestNEW()
+       // categoryize = [OrderItemsCategory(name: "New", items: todayOrdersTest),OrderItemsCategory(name: "Ready", items: todayOrdersTestReady)]
     }
 }
 
 extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return categoryize.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        todayOrdersTest.count
+        //lbl.text = mobileBrand[section].brandName
+        return categoryize[section].items.count
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+//        view.backgroundColor = #colorLiteral(red: 1, green: 0.3653766513, blue: 0.1507387459, alpha: 1)
+//
+//        let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
+//        lbl.font = UIFont.systemFont(ofSize: 20)
+//        lbl.text = categoryize[section].name
+//        view.addSubview(lbl)
+//        return view
+//    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return categoryize[section].name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = orderTable.dequeueReusableCell(withIdentifier: K.orderTable.orderTableCell, for: indexPath) as! OrderTableViewCell
         
-//        let category = categoryWiseFoods[indexPath.section]
-//        let drink = category.items[indexPath.row]
-//
-        cell.setupUI(category: todayOrdersTest[indexPath.row])
+        //        let category = categoryWiseFoods[indexPath.section]
+        //        let drink = category.items[indexPath.row]
+        //
+        //cell.setupUI(category: todayOrdersTest[indexPath.row])
+        //mobileBrand[indexPath.section].modelName?[indexPath.row]
+        cell.setupUI(category: categoryize[indexPath.section].items[indexPath.row])
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == orderTable{
@@ -56,7 +92,7 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
         if segue.identifier == K.OrderTableToOrderDetailsSeauge{
             if let indexPath = orderTable.indexPathForSelectedRow {
                 let orderDescriptionViewController = segue.destination as! OrderDetailsViewController
@@ -65,130 +101,82 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
         }
         
     }
-
+    
     
 }
 
 extension OrderViewController{
     
-    func getOrders(){
-
-        self.todayOrders.removeAll()
-
-        for key in orderUsers{
-            self.ref.child("orders").child(key)
-                .observe(.value) { (snapshot) in
-                    if let data = snapshot.value{
-                        if let orders = data as? [String:Any]{
-                            for singleOrder in orders{
-                                if let orderInfo = singleOrder.value as? [String:Any]{
-                                    var placedOrder = Order()
-                                    placedOrder.orderID = singleOrder.key
-                                    placedOrder.orderStatus = orderInfo["status"] as! String
-                                    placedOrder.custName = orderInfo["customerName"] as! String
-                                   //
-                                    if let orderItems = orderInfo["orderItems"] as? [Any]{
-                                        for item in orderItems{
-
-                                           if let itemInfo = item as? [String:Any]{
-                                            placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
-                                            placedOrder.quantity = itemInfo["qunatity"] as! Int
-                                            placedOrder.foodName = itemInfo["foodName"] as! String
-                                            self.date = itemInfo["timestamp"] as! Double
-                                            self.datenow = self.convertTimestampToString(serverTimestamp: self.date)
-                                            self.currentDate = self.convertTimestampToDate(serverTimestamp: self.datenow)
-                                            placedOrder.date = self.currentDate
-                                            }
-                                        }
-                                    }
-                                    if self.currentDate.compare(.isToday){
-                                        self.todayOrders.append(placedOrder)
-                                        print(placedOrder)
-                                       
-                                    }
-                                    self.allOrders.append(placedOrder)
-                                }
-                               self.orderTable.reloadData()
-                            }
-                        }
-                    }
-                }
-        }
-
-    }
-    
-    func getOrdersTest(){
-        var tempId = 0
-        self.todayOrdersTest.removeAll()
-
-        for key in orderUsers{
-            self.ref.child("orders").child(key)
-                .observe(.value) { (snapshot) in
-                    if let data = snapshot.value{
-                        if let orders = data as? [String:Any]{
-                            for singleOrder in orders{
-                                if let orderInfo = singleOrder.value as? [String:Any]{
+    func getOrdersTestNEW(){
+        //self.todayOrdersTest.removeAll()
+        
+        
+        self.ref.child("orders")
+            .observe(.value) { (snapshot) in
+                if let categorys = snapshot.value as? [String: Any] {
+                    
+                    for singlecategory in categorys {
+                        // print(singlecategory.key)//email order single
+                        
+                        if let singleFoodItem = singlecategory.value as? [String: Any] {
+                            
+                            for item in singleFoodItem{
+                                if let orderInfo = item.value as? [String:Any]{
+                                    
+                                    //  print(item)// single order ids
+                                    // print(singleFoodItem.keys)
                                     var placedOrder = OrderTest()
                                     var placedSingleFoodInfo = FoodItemOrder()
-                                    placedOrder.orderID = singleOrder.key
+                                    placedOrder.orderID = item.key
                                     placedOrder.orderStatus = orderInfo["status"] as! String
                                     placedOrder.custName = orderInfo["customerName"] as! String
-                                   //
+                                    print(placedOrder)
                                     if let orderItems = orderInfo["orderItems"] as? [Any]{
                                         for item in orderItems{
-
-                                           if let itemInfo = item as? [String:Any]{
-                                            placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
-                                            placedSingleFoodInfo.quantity = itemInfo["qunatity"] as! Int
-                                            placedSingleFoodInfo.foodName = itemInfo["foodName"] as! String
-                                            placedSingleFoodInfo.foodPrice = itemInfo["foodPrice"] as! Double
-                                            self.date = itemInfo["timestamp"] as! Double
-                                            self.datenow = self.convertTimestampToString(serverTimestamp: self.date)
-                                            self.currentDate = self.convertTimestampToDate(serverTimestamp: self.datenow)
-                                            placedOrder.date = self.currentDate
-                                            placedOrder.foodArray.append(placedSingleFoodInfo)
+                                            
+                                            if let itemInfo = item as? [String:Any]{
+                                                placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
+                                                placedSingleFoodInfo.quantity = itemInfo["qunatity"] as! Int
+                                                placedSingleFoodInfo.foodName = itemInfo["foodName"] as! String
+                                                placedSingleFoodInfo.foodPrice = itemInfo["foodPrice"] as! Double
+                                                self.date = itemInfo["timestamp"] as! Double
+                                                self.datenow = self.convertTimestampToString(serverTimestamp: self.date)
+                                                self.currentDate = self.convertTimestampToDate(serverTimestamp: self.datenow)
+                                                placedOrder.date = self.currentDate
+                                                placedOrder.foodArray.append(placedSingleFoodInfo)
+                                                print(placedOrder.foodArray)
                                             }
                                         }
                                     }
+                                    
                                     if self.currentDate.compare(.isToday){
-                                        tempId += 1
+                                        //tempId += 1
                                         self.todayOrdersTest.append(placedOrder)
-                                        print(placedOrder)
-                                       
+                                        //print(self.categoryize)
+                                        
                                     }
-                                   // self.allOrders.append(placedOrder)
                                 }
-                               self.orderTable.reloadData()
+                                
+                                
+                                
                             }
+                            
+                            
                         }
+                        print(self.todayOrdersTest)
+                        DispatchQueue.main.async {
+                            self.orderTable.reloadData()
+                        }
+                        
+                       self.categoryize.append(OrderItemsCategory(name: "NEW", items: self.todayOrdersTest))
+                        //self.categoryize.append(OrderItemsCategory(name: "NEW", items: self.todayOrdersTest))
+                        //print(self.categoryize)
                     }
-                }
-        }
-
-    }
-    
-    
-    func getOrderUsers(){
-        
-        ref.child("orders").observe(.value, with: {(snapshot) in
-            if let data = snapshot.value{
-                
-                if let userData = data as? [String:Any]{
                     
-                    for key in userData.keys{
-                        self.orderUsers.append(key)
-
-                    }
-                   // self.getOrders()
-                    self.getOrdersTest()
-                   // print(self.orderUsers)
                 }
                 
-            }
-           
-        })
-
-    }
+            }}
+    
     
     func convertTimestampToString(serverTimestamp: Double) -> String {
         let x = serverTimestamp / 1000

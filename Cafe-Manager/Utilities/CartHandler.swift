@@ -50,7 +50,6 @@ class StoreHandler{
                             }
                         }
                        // self.categoryTable.reloadData()
-                        getFoodItems(ref: ref)
                     }
                 }
             }

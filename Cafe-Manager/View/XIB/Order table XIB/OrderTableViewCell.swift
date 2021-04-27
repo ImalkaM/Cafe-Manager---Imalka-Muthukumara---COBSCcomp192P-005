@@ -27,5 +27,13 @@ class OrderTableViewCell: UITableViewCell {
     func setupUI(category:OrderTest){
         cusNameLabel.text = category.custName
         orderIdLabel.text = category.orderID
+        
+//        if foodItem.discount > 0 {
+//            discountContainer.isHidden = false
+//            discountLabel.text =  "\(String(foodItem.discount))%"
+//        }else{
+//            discountContainer.isHidden = true
+//            discountLabel.text = ""
+//        }
     }
 }

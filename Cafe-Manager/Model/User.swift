@@ -63,6 +63,12 @@ struct OrderTest{
    
 }
 
+//struct  finalOrders {
+//    var orderStatus:String
+//    var 
+//    
+//}
+
 struct FoodItemOrder {
     var foodName:String = ""
     var quantity:Int = 0
@@ -71,8 +77,24 @@ struct FoodItemOrder {
     
 }
 
+struct OrderItemsCategory {
+   var name : String
+   var items : [OrderTest]
+}
+
+class MobileBrand {
+    var brandName: String?
+    var modelName: [OrderTest]?
+    
+    init(brandName: String, modelName: [OrderTest]) {
+        self.brandName = brandName
+        self.modelName = modelName
+    }
+}
+
 
 struct CategoryItems {
+    
    let name : String
    var items : [FoodItem]
 }

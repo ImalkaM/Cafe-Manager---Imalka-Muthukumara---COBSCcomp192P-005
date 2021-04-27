@@ -59,7 +59,7 @@ extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
     
     func availableButtonToggled(at indexPath: IndexPath,isOn: Bool, foodItem: FoodItem) {
        
-        print(self.categoryWiseFoods[indexPath.section].name)
+       // print(self.categoryWiseFoods[indexPath.section].name)
         ref.child("FoodItemsCafe").child(self.categoryWiseFoods[indexPath.section].name).child(foodItem.id).child("available").setValue(isOn){
             (error:Error?, ref:DatabaseReference) in
             if let error = error {
@@ -154,7 +154,7 @@ extension StoreViewController{
         self.categoryWiseFoods = []
         
         //for categorys in StoreHandler.categoryCollection{
-        
+       
         self.ref.child("FoodItemsCafe")
             .observeSingleEvent(of:.value) { (snapshot) in
                
