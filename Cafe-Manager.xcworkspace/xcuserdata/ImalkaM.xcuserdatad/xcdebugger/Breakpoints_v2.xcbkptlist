@@ -295,22 +295,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C2F4BE70-7A69-4ADC-8110-B04204241131"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cafe-Manager/Controller/Order details/OrderDetailsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "setupFoodDescritionView(orderItem:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9EFC9176-BA9E-4723-AB26-BC47E7DACD31"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -590,8 +574,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -606,8 +590,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -622,8 +606,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -638,8 +622,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "getAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -654,8 +638,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "getAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -670,8 +654,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
             landmarkName = "getAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -686,8 +670,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "getAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -702,8 +686,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "getAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -718,8 +702,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "getAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -750,8 +734,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "rejectButtonTapped(at:tempItemDetails:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -766,8 +750,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "rejectButtonTapped(at:tempItemDetails:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -782,8 +766,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "rejectButtonTapped(at:tempItemDetails:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -798,8 +782,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "acceptButtontapped(at:tempItemDetails:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -814,8 +798,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "OrderViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -830,8 +814,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +830,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,8 +846,8 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "getAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
@@ -878,9 +862,41 @@
             filePath = "Cafe-Manager/Controller/Order/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "acceptButtontapped(at:tempItemDetails:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A83016D-70B0-4449-8C62-FD9D063F5379"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cafe-Manager/Controller/Order details/OrderDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "setupFoodDescritionView(orderItem:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B01DE41-F549-45CF-B0F0-139FC346500E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cafe-Manager/Controller/Order details/OrderDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "statusButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

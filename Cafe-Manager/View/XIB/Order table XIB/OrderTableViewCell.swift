@@ -50,8 +50,6 @@ class OrderTableViewCell: UITableViewCell {
         delegate.acceptButtontapped(at: indexPath, tempItemDetails: tempItemDetails)
     }
     
-    
-    
     func setupUI(category:SingleOrderDetails){
         tempItemDetails = category
         cusNameLabel.text = category.custName
@@ -61,6 +59,7 @@ class OrderTableViewCell: UITableViewCell {
             acceptButonContainer.backgroundColor = UIColor.green
             acceptButton.setTitleColor(.black, for: .normal)
             acceptButton.setTitle("Accepted", for: .normal)
+            acceptButton.isEnabled = false
         }else if  category.orderStatus == "Pending"{
             acceptButonContainer.backgroundColor = UIColor.green
             rejectButtoncobtainer.backgroundColor = UIColor.red

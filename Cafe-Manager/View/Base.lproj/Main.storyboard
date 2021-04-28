@@ -405,19 +405,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXW-gn-JVJ">
                                 <rect key="frame" x="32" y="124" width="106" height="102"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xo7-yr-ux3">
-                                        <rect key="frame" x="22" y="41" width="62.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNB-ci-741">
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="102"/>
+                                        <state key="normal" title="Pending"/>
+                                        <connections>
+                                            <action selector="statusButtonTapped:" destination="fNB-sr-It0" eventType="touchUpInside" id="h7B-UH-Lhx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="DNB-ci-741" firstAttribute="top" secondItem="LXW-gn-JVJ" secondAttribute="top" id="7e8-HD-6TQ"/>
                                     <constraint firstAttribute="width" constant="106" id="9iJ-sr-zbw"/>
-                                    <constraint firstItem="xo7-yr-ux3" firstAttribute="centerX" secondItem="LXW-gn-JVJ" secondAttribute="centerX" id="WlO-zX-EW6"/>
+                                    <constraint firstItem="DNB-ci-741" firstAttribute="centerY" secondItem="LXW-gn-JVJ" secondAttribute="centerY" id="HnN-si-vys"/>
+                                    <constraint firstAttribute="bottom" secondItem="DNB-ci-741" secondAttribute="bottom" id="PeD-LN-S56"/>
+                                    <constraint firstItem="DNB-ci-741" firstAttribute="leading" secondItem="LXW-gn-JVJ" secondAttribute="leading" id="QgQ-01-j7x"/>
                                     <constraint firstAttribute="height" constant="102" id="aTU-O8-3sZ"/>
-                                    <constraint firstItem="xo7-yr-ux3" firstAttribute="centerY" secondItem="LXW-gn-JVJ" secondAttribute="centerY" id="xVC-dA-Asz"/>
+                                    <constraint firstItem="DNB-ci-741" firstAttribute="centerX" secondItem="LXW-gn-JVJ" secondAttribute="centerX" id="mCr-pJ-s2M"/>
+                                    <constraint firstAttribute="trailing" secondItem="DNB-ci-741" secondAttribute="trailing" id="wxH-jA-erH"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -467,11 +472,13 @@
                     <connections>
                         <outlet property="cusNameOrderIDlabel" destination="eBn-mm-LML" id="PCh-wS-XFW"/>
                         <outlet property="orderDetailsTable" destination="CiT-Tk-aR4" id="3Je-Dh-GFP"/>
-                        <outlet property="statusLabel" destination="xo7-yr-ux3" id="md2-so-lMV"/>
-                        <outlet property="statusView" destination="LXW-gn-JVJ" id="0YE-9X-8tM"/>
+                        <outlet property="statusButton" destination="DNB-ci-741" id="9Bk-oL-VcN"/>
+                        <outlet property="statusContainer" destination="LXW-gn-JVJ" id="cmH-h0-eyV"/>
+                        <segue destination="B8c-dG-LVk" kind="unwind" identifier="UnwindFromOrderDetails" unwindAction="unwindFromOrderDetails:" id="ZQc-Ec-iIt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IvS-nJ-Xju" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="B8c-dG-LVk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2200.8000000000002" y="-816.34182908545733"/>
         </scene>
@@ -915,7 +922,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0D5-0b-kKw"/>
+        <segue reference="iQd-g2-3C4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="account" width="170.5" height="170.5"/>

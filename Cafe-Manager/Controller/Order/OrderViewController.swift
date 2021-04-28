@@ -50,6 +50,15 @@ class OrderViewController: UIViewController {
         
        // categoryize = [OrderItemsCategory(name: "New", items: todayOrdersTest),OrderItemsCategory(name: "Ready", items: todayOrdersTestReady)]
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.orderTable.reloadData()
+        }
+    }
+    
+    @IBAction func unwindFromOrderDetails( _ seg: UIStoryboardSegue) {
+    }
 }
 extension OrderViewController: orderItemDelegate {
     
