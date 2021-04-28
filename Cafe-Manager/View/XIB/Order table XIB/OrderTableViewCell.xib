@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJB-AY-nGc">
-                                        <rect key="frame" x="18" y="25" width="44" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <state key="normal" title="Reject">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -53,9 +53,13 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DJB-AY-nGc" secondAttribute="trailing" id="5TS-BW-dAN"/>
                                     <constraint firstAttribute="width" constant="80" id="90j-E0-xFz"/>
+                                    <constraint firstItem="DJB-AY-nGc" firstAttribute="top" secondItem="I0O-FE-DOI" secondAttribute="top" id="D8h-yk-dX5"/>
                                     <constraint firstItem="DJB-AY-nGc" firstAttribute="centerY" secondItem="I0O-FE-DOI" secondAttribute="centerY" id="JZa-2s-krR"/>
+                                    <constraint firstItem="DJB-AY-nGc" firstAttribute="leading" secondItem="I0O-FE-DOI" secondAttribute="leading" id="Vk6-5A-5gK"/>
                                     <constraint firstItem="DJB-AY-nGc" firstAttribute="centerX" secondItem="I0O-FE-DOI" secondAttribute="centerX" id="sff-6E-5UJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="DJB-AY-nGc" secondAttribute="bottom" id="wkT-M6-hfd"/>
                                     <constraint firstAttribute="height" constant="80" id="x6R-fD-Zm0"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -68,7 +72,7 @@
                                 <rect key="frame" x="90" y="0.0" width="80" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qwe-zw-uLu">
-                                        <rect key="frame" x="15.5" y="25" width="49" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <state key="normal" title="Accept">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -79,9 +83,13 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Qwe-zw-uLu" firstAttribute="leading" secondItem="7dU-yP-doa" secondAttribute="leading" id="9YS-TB-frI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qwe-zw-uLu" secondAttribute="trailing" id="9dW-6W-13B"/>
                                     <constraint firstAttribute="height" constant="80" id="CdK-0G-WzE"/>
                                     <constraint firstAttribute="width" constant="80" id="F2P-NM-Thq"/>
+                                    <constraint firstItem="Qwe-zw-uLu" firstAttribute="top" secondItem="7dU-yP-doa" secondAttribute="top" id="UDi-xJ-AtK"/>
                                     <constraint firstItem="Qwe-zw-uLu" firstAttribute="centerY" secondItem="7dU-yP-doa" secondAttribute="centerY" id="hk3-HG-qzo"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qwe-zw-uLu" secondAttribute="bottom" id="md1-qD-2xL"/>
                                     <constraint firstItem="Qwe-zw-uLu" firstAttribute="centerX" secondItem="7dU-yP-doa" secondAttribute="centerX" id="pFp-68-9CZ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -107,6 +115,7 @@
                 <outlet property="acceptButton" destination="Qwe-zw-uLu" id="V8T-wF-7yH"/>
                 <outlet property="cusNameLabel" destination="hiy-4f-Dnx" id="KqR-uX-p3n"/>
                 <outlet property="orderIdLabel" destination="RqQ-4j-RBK" id="t0Z-9D-9Mr"/>
+                <outlet property="rejectButton" destination="DJB-AY-nGc" id="mWY-Za-Yg4"/>
                 <outlet property="rejectButtoncobtainer" destination="I0O-FE-DOI" id="E7q-Qz-0tK"/>
             </connections>
             <point key="canvasLocation" x="219.56521739130437" y="135.9375"/>

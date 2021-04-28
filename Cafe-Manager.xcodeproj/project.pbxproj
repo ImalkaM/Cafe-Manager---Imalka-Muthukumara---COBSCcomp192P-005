@@ -23,6 +23,8 @@
 		AF75B3A3263512F000DF7789 /* OrderDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75B3A1263512F000DF7789 /* OrderDetailsTableViewCell.swift */; };
 		AF75B3A4263512F100DF7789 /* OrderDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF75B3A2263512F000DF7789 /* OrderDetailsTableViewCell.xib */; };
 		AF877457263797F0005C9236 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF877456263797F0005C9236 /* Category.swift */; };
+		AF87745D2639176F005C9236 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87745C2639176F005C9236 /* AccountViewController.swift */; };
+		AF87746526391E57005C9236 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87746426391E57005C9236 /* Enum.swift */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -80,6 +82,8 @@
 		AF75B3A1263512F000DF7789 /* OrderDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		AF75B3A2263512F000DF7789 /* OrderDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		AF877456263797F0005C9236 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		AF87745C2639176F005C9236 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		AF87746426391E57005C9236 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +243,14 @@
 			path = "Order Detail XIB";
 			sourceTree = "<group>";
 		};
+		AF87745B26391745005C9236 /* Account View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AF87745C2639176F005C9236 /* AccountViewController.swift */,
+			);
+			path = "Account View Controller";
+			sourceTree = "<group>";
+		};
 		AF923C1D26267F55001AD12C = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +320,7 @@
 		AF923C7E26268AA1001AD12C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AF87745B26391745005C9236 /* Account View Controller */,
 				AF75B397263466B300DF7789 /* Order details */,
 				AF75B3732633CFAF00DF7789 /* Order */,
 				AF75B22826274C8000DF7789 /* Store  */,
@@ -351,6 +364,7 @@
 				AF923CC22626BC22001AD12C /* SessionManager.swift */,
 				AF923CC42626BC22001AD12C /* ValidatorFields.swift */,
 				AF923C962626A546001AD12C /* CustomUI.swift */,
+				AF87746426391E57005C9236 /* Enum.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -624,8 +638,10 @@
 				AF923C972626A546001AD12C /* CustomUI.swift in Sources */,
 				AF923CC72626BC23001AD12C /* CartHandler.swift in Sources */,
 				AF75B2AE26286D0700DF7789 /* AddItemViewController.swift in Sources */,
+				AF87746526391E57005C9236 /* Enum.swift in Sources */,
 				AF75B30F26306AB900DF7789 /* FoodPreviewTableViewCell.swift in Sources */,
 				AF923CC92626BC23001AD12C /* Constants.swift in Sources */,
+				AF87745D2639176F005C9236 /* AccountViewController.swift in Sources */,
 				AF75B23626275D5C00DF7789 /* AddCategoryViewController.swift in Sources */,
 				AF923C8E2626A3DB001AD12C /* SignUpViewController.swift in Sources */,
 				AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */,

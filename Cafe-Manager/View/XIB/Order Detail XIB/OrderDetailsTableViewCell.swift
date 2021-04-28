@@ -31,4 +31,8 @@ class OrderDetailsTableViewCell: UITableViewCell {
         
     }
     
+    
+    
 }
+
+

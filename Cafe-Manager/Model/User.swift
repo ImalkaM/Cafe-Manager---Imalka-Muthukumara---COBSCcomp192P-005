@@ -25,16 +25,16 @@ struct FoodItem {
     var image:String = ""
     var isAvailable:Bool = false
 }
-struct CartItem {
-    var itemName: String = ""
-    var itemImgRes: String = ""
-    var discount: Int = 0
-    var itemPrice: Double = 0
-    var itemCount: Int = 0
-    var itemTotal: Double {
-        return Double(itemCount) *  itemPrice
-    }
-}
+//struct CartItem {
+//    var itemName: String = ""
+//    var itemImgRes: String = ""
+//    var discount: Int = 0
+//    var itemPrice: Double = 0
+//    var itemCount: Int = 0
+//    var itemTotal: Double {
+//        return Double(itemCount) *  itemPrice
+//    }
+//}
 struct Category{
     var categoryID: String = ""
     var categoryName:String = ""
@@ -53,10 +53,11 @@ struct Order{
     var date:Date = Date()
    
 }
-struct OrderTest{
+struct SingleOrderDetails{
     var orderID: String = ""
     var orderStatus:String = "NEW"
     var custName:String = ""
+    var custEmail:String = ""
     var orderTotal:Double = 0.0
     var date:Date = Date()
     var foodArray:[FoodItemOrder] = []
@@ -73,24 +74,23 @@ struct FoodItemOrder {
     var foodName:String = ""
     var quantity:Int = 0
     var foodPrice:Double = 0.0
-    
-    
+   
 }
 
 struct OrderItemsCategory {
-   var name : String
-   var items : [OrderTest]
+   var name : String!
+   var items : [SingleOrderDetails]!
 }
 
-class MobileBrand {
-    var brandName: String?
-    var modelName: [OrderTest]?
-    
-    init(brandName: String, modelName: [OrderTest]) {
-        self.brandName = brandName
-        self.modelName = modelName
-    }
-}
+//class MobileBrand {
+//    var brandName: String?
+//    var modelName: [OrderTest]?
+//
+//    init(brandName: String, modelName: [OrderTest]) {
+//        self.brandName = brandName
+//        self.modelName = modelName
+//    }
+//}
 
 
 struct CategoryItems {

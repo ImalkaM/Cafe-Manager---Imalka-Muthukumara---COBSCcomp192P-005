@@ -36,7 +36,7 @@ class OrderDetailsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func setupFoodDescritionView(orderItem:OrderTest){
+    func setupFoodDescritionView(orderItem:SingleOrderDetails){
         orderDescriptionItem.custName = orderItem.custName
         orderDescriptionItem.orderID = orderItem.orderID
         orderDescriptionItem.orderStatus = orderItem.orderStatus

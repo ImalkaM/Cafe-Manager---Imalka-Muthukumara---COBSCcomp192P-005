@@ -17,10 +17,14 @@ class OrderViewController: UIViewController {
     var allOrders:[Order] = []
     var orderUsers:[String] = []
     
-    var mobileBrand = [MobileBrand]()
+   // var mobileBrand = [MobileBrand]()
     
-    var todayOrdersTest:[OrderTest] = []
-    var todayOrdersTestReady:[OrderTest] = []
+    var todayOrdersTest:[SingleOrderDetails] = []
+    var todayOrdersReady:[SingleOrderDetails] = []
+    
+   var orderCategoryArray = [OrderItemsCategory]()
+    
+    var titles:[String] = ["Neww","Ready"]
     
     var categoryize:[OrderItemsCategory] = []
     var date:Double = 0.0
@@ -34,23 +38,99 @@ class OrderViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        orderCategoryArray = [OrderItemsCategory(name: "New", items: todayOrdersTest),
+                              OrderItemsCategory(name: "Ready", items: todayOrdersReady)
+        ]
         ref = Database.database().reference()
         orderTable.register(UINib(nibName: K.orderTable.nibNameOrderTable, bundle: nil), forCellReuseIdentifier: K.orderTable.orderTableCell)
         //getOrderUsers()
-        getOrdersTestNEW()
+        getAllOrders()
+        
+        
+        
        // categoryize = [OrderItemsCategory(name: "New", items: todayOrdersTest),OrderItemsCategory(name: "Ready", items: todayOrdersTestReady)]
     }
+}
+extension OrderViewController: orderItemDelegate {
+    
+    func rejectButtonTapped(at indexPath: IndexPath, tempItemDetails: SingleOrderDetails) {
+        //print("Tappedr \(self.categoryize[indexPath.section].items[indexPath.row].custEmail)")
+        
+       
+       
+        self.orderCategoryArray[0].items.remove(at: indexPath.row)
+      
+       self.orderTable.deleteRows(at: [indexPath], with: .fade)
+        ref.child("orders")
+            .child(tempItemDetails.custEmail)
+            .child(tempItemDetails.orderID)
+            .child("status")
+            .setValue(OrderStatus.cancel.rawValue){
+            (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                //error
+            } else {
+
+                DispatchQueue.main.async {
+                    self.orderTable.reloadData()
+                }
+                //self.getFoodItems()
+                //self.foodItemArray.remove(at: indexPath.row)
+            }
+        }
+    }
+    
+    func acceptButtontapped(at indexPath: IndexPath, tempItemDetails: SingleOrderDetails) {
+        print("Tappeda \(indexPath.row)")
+       
+        self.orderCategoryArray[0].items.remove(at: indexPath.row)
+      
+        self.orderTable.deleteRows(at: [indexPath], with: .fade)
+        
+        //orderCategoryArray[1].items.append(tempItemDetails)
+ 
+         ref.child("orders")
+             .child(tempItemDetails.custEmail)
+             .child(tempItemDetails.orderID)
+             .child("status")
+             .setValue(OrderStatus.Preapration.rawValue){
+             (error:Error?, ref:DatabaseReference) in
+             if let error = error {
+                 //error
+             } else {
+
+                 DispatchQueue.main.async {
+                     self.orderTable.reloadData()
+                 }
+                 //self.getFoodItems()
+                 //self.foodItemArray.remove(at: indexPath.row)
+             }
+         }
+       
+//        if categoryize[1].name.isEmpty{
+//            self.categoryize[1].items.append(<#T##newElement: OrderTest##OrderTest#>)
+//        }
+
+        
+        DispatchQueue.main.async {
+            self.orderTable.reloadData()
+        }
+        
+    }
+    
 }
 
 extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return categoryize.count
+        return orderCategoryArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //lbl.text = mobileBrand[section].brandName
-        return categoryize[section].items.count
+        
+        print(orderCategoryArray[section].items.count)
+        return orderCategoryArray[section].items.count
     }
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -65,7 +145,8 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
 //    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categoryize[section].name
+        //return categoryize[section].name
+        return orderCategoryArray[section].name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,8 +156,12 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
         //        let drink = category.items[indexPath.row]
         //
         //cell.setupUI(category: todayOrdersTest[indexPath.row])
+        cell.setupUI(category: orderCategoryArray[indexPath.section].items[indexPath.row])
+        print(orderCategoryArray[indexPath.section].items[indexPath.row])
         //mobileBrand[indexPath.section].modelName?[indexPath.row]
-        cell.setupUI(category: categoryize[indexPath.section].items[indexPath.row])
+        cell.indexPath = indexPath
+        cell.delegate = self
+        //cell.setupUI(category: categoryize[indexPath.section].items[indexPath.row])
         
         return cell
     }
@@ -96,25 +181,28 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
         if segue.identifier == K.OrderTableToOrderDetailsSeauge{
             if let indexPath = orderTable.indexPathForSelectedRow {
                 let orderDescriptionViewController = segue.destination as! OrderDetailsViewController
-                orderDescriptionViewController.setupFoodDescritionView(orderItem: todayOrdersTest[indexPath.row])
+                //orderDescriptionViewController.setupFoodDescritionView(orderItem: todayOrdersTest[indexPath.row])
+                orderDescriptionViewController.setupFoodDescritionView(orderItem: orderCategoryArray[indexPath.section].items[indexPath.row])
             }
         }
         
     }
     
-    
 }
 
 extension OrderViewController{
     
-    func getOrdersTestNEW(){
+    func getAllOrders(){
         //self.todayOrdersTest.removeAll()
         
         
         self.ref.child("orders")
             .observe(.value) { (snapshot) in
                 if let categorys = snapshot.value as? [String: Any] {
-                    
+                    self.categoryize = []
+                    self.todayOrdersTest = []
+                    self.orderCategoryArray[0].items = []
+                    self.orderCategoryArray[1].items = []
                     for singlecategory in categorys {
                         // print(singlecategory.key)//email order single
                         
@@ -125,7 +213,7 @@ extension OrderViewController{
                                     
                                     //  print(item)// single order ids
                                     // print(singleFoodItem.keys)
-                                    var placedOrder = OrderTest()
+                                    var placedOrder = SingleOrderDetails()
                                     var placedSingleFoodInfo = FoodItemOrder()
                                     placedOrder.orderID = item.key
                                     placedOrder.orderStatus = orderInfo["status"] as! String
@@ -135,6 +223,7 @@ extension OrderViewController{
                                         for item in orderItems{
                                             
                                             if let itemInfo = item as? [String:Any]{
+                                                placedOrder.custEmail = singlecategory.key
                                                 placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
                                                 placedSingleFoodInfo.quantity = itemInfo["qunatity"] as! Int
                                                 placedSingleFoodInfo.foodName = itemInfo["foodName"] as! String
@@ -149,18 +238,21 @@ extension OrderViewController{
                                         }
                                     }
                                     
-                                    if self.currentDate.compare(.isToday){
+                                    if self.currentDate.compare(.isToday) &&   placedOrder.orderStatus != OrderStatus.cancel.rawValue{
                                         //tempId += 1
-                                        self.todayOrdersTest.append(placedOrder)
-                                        //print(self.categoryize)
+                                        //self.todayOrdersTest.append(placedOrder)
+                                        if placedOrder.orderStatus == OrderStatus.ready.rawValue {
+                                            
+                                            self.orderCategoryArray[1].items.append(placedOrder)
+                                        }else{
+                                            self.orderCategoryArray[0].items.append(placedOrder)
+                                        }
+                                  
                                         
                                     }
                                 }
                                 
-                                
-                                
                             }
-                            
                             
                         }
                         print(self.todayOrdersTest)
@@ -168,7 +260,7 @@ extension OrderViewController{
                             self.orderTable.reloadData()
                         }
                         
-                       self.categoryize.append(OrderItemsCategory(name: "NEW", items: self.todayOrdersTest))
+                        //self.categoryize.append(OrderItemsCategory(items: self.todayOrdersTest))
                         //self.categoryize.append(OrderItemsCategory(name: "NEW", items: self.todayOrdersTest))
                         //print(self.categoryize)
                     }

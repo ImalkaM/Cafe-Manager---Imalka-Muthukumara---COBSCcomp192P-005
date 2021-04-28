@@ -9,17 +9,17 @@ import Foundation
 import Firebase
 
 
-class CartHandler{
-    static var fooditem:[CartItem] = []
-    
-    static func getCartItems() -> [CartItem]{
-        return fooditem
-    }
-    
-    static func clearCart(){
-        self.fooditem.removeAll()
-    }
-}
+//class CartHandler{
+//    static var fooditem:[CartItem] = []
+//    
+//    static func getCartItems() -> [CartItem]{
+//        return fooditem
+//    }
+//    
+//    static func clearCart(){
+//        self.fooditem.removeAll()
+//    }
+//}
 
 class StoreHandler{
     static var categoryCollection:[Category] = []
