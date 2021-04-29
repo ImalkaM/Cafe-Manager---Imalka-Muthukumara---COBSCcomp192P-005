@@ -65,7 +65,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellTable" destination="c5J-XT-gbs" id="K1P-EL-iNf"/>
+                <outlet property="dateLabel" destination="8IA-p8-nL2" id="r4G-Zx-1w6"/>
                 <outlet property="heightcell" destination="54U-0q-8Ys" id="aSY-Y6-eFu"/>
+                <outlet property="totalSales" destination="fRd-7N-lZV" id="mKZ-qt-GmH"/>
             </connections>
             <point key="canvasLocation" x="413.768115942029" y="156.36160714285714"/>
         </tableViewCell>

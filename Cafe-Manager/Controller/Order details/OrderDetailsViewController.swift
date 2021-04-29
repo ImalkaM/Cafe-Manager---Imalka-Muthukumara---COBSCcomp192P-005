@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+import SwiftDate
+import Loaf
 
 class OrderDetailsViewController: UIViewController {
 
@@ -16,6 +18,8 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var statusButton: UIButton!
     @IBOutlet weak var statusContainer: UIView!
     @IBOutlet weak var orderDetailsTable: UITableView!
+    
+    var currentDate:Date = Date()
     
     var orderDescriptionItem:Order = Order(orderID: "", orderStatus: "", custName: "", orderTotal: 0.0, foodName: "", quantity: 0, foodPrice: 0.0, date: Date() )
     
@@ -44,7 +48,7 @@ class OrderDetailsViewController: UIViewController {
             statusButton.setTitleColor(.black, for: .normal)
             statusButton.isEnabled = false
         }
-        
+       // gg()
     }
     
     @IBAction func statusButtonTapped(_ sender: UIButton) {
@@ -60,11 +64,62 @@ class OrderDetailsViewController: UIViewController {
             if let error = error {
                 //error
             } else {
-
+                self.gg()
                 //self.getFoodItems()
                 //self.foodItemArray.remove(at: indexPath.row)
             }
+                
         }
+        
+
+        
+    }
+    
+    func gg(){
+        
+        for item in tempFooditem{
+//                let userData = [
+//                    "\(item.foodName)" : item.foodPrice
+//                ]
+            ref.child("sales").child("\(currentDate.toFormat("dd_MM_yyyy"))")
+                .child("\(item.foodName)")
+                .observeSingleEvent(of: .value, with: { (snapshot) in
+              // Get user value
+                   
+                    if let categorys = snapshot .value as?  Double {
+                        
+                        self.ref.child("sales/\(self.currentDate.toFormat("dd_MM_yyyy"))/\(item.foodName)").setValue(item.foodPrice + categorys){ (error, ref) in
+                            if let err =  error{
+                                Loaf("\(err.localizedDescription)", state: .error, sender: self).show()
+                            }
+                            else{
+                                //                        Loaf("User Registered successfully", state: .success, sender: self).show()
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                                     
+                        
+                        print(categorys)
+                    }
+                    
+                   
+             //let user = User(username: username)
+//
+              }) { (error) in
+                print(error.localizedDescription)
+            }
+            //self.ref.child("users/\(user.uid)/username").setValue(username)
+
+        }
+        
+//        self.ref.child("orders")
+//            .observe(.value) { (snapshot) in
+//                if let categorys = snapshot.value as? [String: Any] {
+//                    self.categoryize = []
+//                    self.todayOrdersTest = []
+//                    self.orderCategoryArray[0].items = []
+//                    self.orderCategoryArray[1].items = []
+//                    for singlecategory in categorys {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

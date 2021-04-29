@@ -92,6 +92,17 @@ struct OrderItemsCategory {
 //    }
 //}
 
+struct SalesDetails {
+    var dateSales:String = ""
+    var totalPriceAll:Double = 0.0
+    var fooodItemsSold = [SoldFoodItems]()
+}
+
+struct SoldFoodItems {
+    var foodName:String = ""
+    var totalPrice:Double = 0.0 
+}
+
 
 struct CategoryItems {
     

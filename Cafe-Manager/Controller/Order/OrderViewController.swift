@@ -46,7 +46,9 @@ class OrderViewController: UIViewController {
         //getOrderUsers()
         getAllOrders()
         
-        
+       let g = currentDate
+        let gg = g.year
+        print(gg)
         
        // categoryize = [OrderItemsCategory(name: "New", items: todayOrdersTest),OrderItemsCategory(name: "Ready", items: todayOrdersTestReady)]
     }

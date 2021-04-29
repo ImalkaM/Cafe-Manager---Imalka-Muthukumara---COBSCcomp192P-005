@@ -11,8 +11,12 @@ class AccountTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var cellTable: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var totalSales: UILabel!
     
     @IBOutlet weak var heightcell: NSLayoutConstraint!
+    
+    var fooodItemsSold = [SoldFoodItems]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,11 +43,37 @@ class AccountTableViewCell: UITableViewCell {
         super.layoutIfNeeded()
         heightcell.constant = 60 * 4
     }
+    
+    
+    func setupView(salesDeatails:SalesDetails){
+        
+        dateLabel.text = salesDeatails.dateSales
+        print(salesDeatails.dateSales)
+        
+        fooodItemsSold = salesDeatails.fooodItemsSold
+//        foodNameLabel.text = foodItem.foodName
+//        descriptionLabel.text = foodItem.foodDescription
+//        priceLabel.text = "RSs.\(String(foodItem.foodPrice))"
+//        imageFood.kf.setImage(with: URL(string: foodItem.image))
+//        //toggleSwitch.isOn = foodItem.isAvailable
+//        tempAvialable = foodItem.isAvailable
+//
+//        if foodItem.discount > 0 {
+//            discountContainer.isHidden = false
+//            discountLabel.text =  "\(String(foodItem.discount))%"
+//        }else{
+//            discountContainer.isHidden = true
+//            discountLabel.text = ""
+//        }
+//        foodItemTemp.id = foodItem.id
+//        foodItemTemp.category = categoryName
+        
+    }
 }
 
 extension AccountTableViewCell:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return fooodItemsSold.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
