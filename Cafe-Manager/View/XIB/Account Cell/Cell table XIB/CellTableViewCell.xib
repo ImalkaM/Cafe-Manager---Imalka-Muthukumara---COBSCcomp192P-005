@@ -45,6 +45,7 @@
             <connections>
                 <outlet property="itemLabel" destination="ADR-9j-Zle" id="2NV-Bz-Qm7"/>
                 <outlet property="itemQTY" destination="xsS-cv-oSI" id="PvE-Qn-NZ3"/>
+                <outlet property="price" destination="xsS-cv-oSI" id="l3V-rg-dfB"/>
             </connections>
             <point key="canvasLocation" x="29.710144927536234" y="101.45089285714285"/>
         </tableViewCell>

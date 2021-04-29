@@ -48,9 +48,10 @@ class AccountTableViewCell: UITableViewCell {
     func setupView(salesDeatails:SalesDetails){
         
         dateLabel.text = salesDeatails.dateSales
-        print(salesDeatails.dateSales)
+        print(salesDeatails)
         
         fooodItemsSold = salesDeatails.fooodItemsSold
+       // print(fooodItemsSold)
 //        foodNameLabel.text = foodItem.foodName
 //        descriptionLabel.text = foodItem.foodDescription
 //        priceLabel.text = "RSs.\(String(foodItem.foodPrice))"
@@ -73,12 +74,15 @@ class AccountTableViewCell: UITableViewCell {
 
 extension AccountTableViewCell:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(fooodItemsSold.count)
         return fooodItemsSold.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cellTable.dequeueReusableCell(withIdentifier: K.miniTable.accountTableCellDetails, for: indexPath) as! CellTableViewCell
         
+        cell.setupView(salesDeatails: fooodItemsSold[indexPath.row])
+        print(fooodItemsSold[indexPath.row])
         //cell.setupUI(singleOrderDetails: tempFooditem[indexPath.row])
         cell.layoutSubviews()
 
@@ -88,7 +92,5 @@ extension AccountTableViewCell:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }
-    
-    
     
 }

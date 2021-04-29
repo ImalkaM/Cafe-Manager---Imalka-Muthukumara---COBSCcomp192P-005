@@ -25,6 +25,7 @@ class OrderDetailsViewController: UIViewController {
     
     
     var tempFooditem:[FoodItemOrder] = []
+    var tempFooditemFB:[FoodItemOrder] = []
     
     var placedOrder = SingleOrderDetails()
 
@@ -48,7 +49,9 @@ class OrderDetailsViewController: UIViewController {
             statusButton.setTitleColor(.black, for: .normal)
             statusButton.isEnabled = false
         }
-       // gg()
+        tempFooditemFB = tempFooditem
+        print(tempFooditemFB)
+        ggnew()
     }
     
     @IBAction func statusButtonTapped(_ sender: UIButton) {
@@ -64,15 +67,14 @@ class OrderDetailsViewController: UIViewController {
             if let error = error {
                 //error
             } else {
-                self.gg()
+                self.gg1()
+               // self.gg()
                 //self.getFoodItems()
                 //self.foodItemArray.remove(at: indexPath.row)
             }
                 
         }
-        
-
-        
+           
     }
     
     func gg(){
@@ -81,13 +83,14 @@ class OrderDetailsViewController: UIViewController {
 //                let userData = [
 //                    "\(item.foodName)" : item.foodPrice
 //                ]
+           
             ref.child("sales").child("\(currentDate.toFormat("dd_MM_yyyy"))")
                 .child("\(item.foodName)")
-                .observeSingleEvent(of: .value, with: { (snapshot) in
+                .observeSingleEvent(of:.value, with: { (snapshot) in
               // Get user value
-                   
-                    if let categorys = snapshot .value as?  Double {
-                        
+                    print(self.currentDate.toFormat("dd_MM_yyyy"))
+                    if let categorys = snapshot.value as?  Double {
+                        print(categorys)
                         self.ref.child("sales/\(self.currentDate.toFormat("dd_MM_yyyy"))/\(item.foodName)").setValue(item.foodPrice + categorys){ (error, ref) in
                             if let err =  error{
                                 Loaf("\(err.localizedDescription)", state: .error, sender: self).show()
@@ -99,7 +102,7 @@ class OrderDetailsViewController: UIViewController {
                         }
                                      
                         
-                        print(categorys)
+                       // print(categorys)
                     }
                     
                    
@@ -120,6 +123,52 @@ class OrderDetailsViewController: UIViewController {
 //                    self.orderCategoryArray[0].items = []
 //                    self.orderCategoryArray[1].items = []
 //                    for singlecategory in categorys {
+    }
+    
+    
+    func ggnew(){
+        
+        ref.child("sales").child("\(currentDate.toFormat("dd_MM_yyyy"))")
+            .observeSingleEvent(of:.value, with: { (snapshot) in
+                print(self.currentDate.toFormat("dd_MM_yyyy"))
+                if let categorys = snapshot.value as? [String: Any] {
+                    
+                    
+                    print(categorys.keys)
+                                 
+                    
+                   // print(categorys)
+                }
+                
+               
+         //let user = User(username: username)
+//
+          }) { (error) in
+            print(error.localizedDescription)
+        }
+
+    }
+    func gg1(){
+        
+        for item in tempFooditem{
+                let userData = [
+                    "\(item.foodName)" : item.foodPrice
+                ]
+            //var tfg = "2010-05-20"
+            print(currentDate.toFormat("yyyy_MM_dd"))
+            ref.child("sales").child("\(currentDate.toFormat("yyyy_MM_dd"))")
+                .child(item.foodName)
+                .updateChildValues(userData)
+            
+            //gg()
+              // Get user value
+            
+                   
+             //let user = User(username: username)
+//
+            //self.ref.child("users/\(user.uid)/username").setValue(username)
+
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

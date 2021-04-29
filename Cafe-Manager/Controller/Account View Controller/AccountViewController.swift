@@ -10,7 +10,7 @@ import Firebase
 import SwiftDate
 
 class AccountViewController: UIViewController{
-    
+   // let london = Region(calendar: .gregorian, zone: .europeLondon, locale: .italian)
     var ref: DatabaseReference!
     @IBOutlet weak var fromDateField: UITextField!
     @IBOutlet weak var toDateField: UITextField!
@@ -18,7 +18,8 @@ class AccountViewController: UIViewController{
     @IBOutlet weak var accountTable: UITableView!
     @IBOutlet weak var totalLabel: UILabel!
     
-    let datePicker = UIDatePicker()
+    let datePickerFrom = UIDatePicker()
+    let datePickerTo = UIDatePicker()
     
     var currentDate:Date = Date()
     //var tempFooditem =  [SoldFoodItems]()
@@ -32,14 +33,14 @@ class AccountViewController: UIViewController{
         ref = Database.database().reference()
         accountTable.register(UINib(nibName: K.accountCell.nibNameAccountDetailsTable, bundle: nil), forCellReuseIdentifier: K.accountCell.accountTableCell)
         self.accountTable.rowHeight = UITableView.automaticDimension
-            self.accountTable.estimatedRowHeight = 45
+        self.accountTable.estimatedRowHeight = 45
         
         createDatePickerFrom(textfield: fromDateField)
         createDatePickerTo(textfield: toDateField)
         
-        getSoldItemData()
+        
     }
-  
+    
 }
 extension AccountViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,11 +54,10 @@ extension AccountViewController:UITableViewDelegate,UITableViewDataSource{
         
         //cell.setupUI(singleOrderDetails: tempFooditem[indexPath.row])
         cell.layoutSubviews()
-
-          cell.layoutIfNeeded()
+        
+        cell.layoutIfNeeded()
         return cell
     }
-    
     
 }
 
@@ -65,73 +65,66 @@ extension AccountViewController{
     
     func getSoldItemData(){
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
+      //  print(dateFormatter.string(from: datePickerTo.date))
+       
+     //   print(datePickerTo.date.date.toFormat("dd-MM-yyyy"))
+        
         self.ref.child("sales")
             .observeSingleEvent(of: .value) { (snapshot) in
                 if let categorys = snapshot.value as? [String: Any] {
-                    
-                   // print()//dates
-                    
-                    for singlecategory in categorys {
-                        if let singleFoodItem = singlecategory.value as? [String: Any] {
-                            var singleSales = SoldFoodItems()
-                           
-                            for singleItem in singleFoodItem{
+                    // print(categorys.keys)//dates
+                    self.allSales = []
+                    for singleDate in categorys {
+                        var singleSales = SoldFoodItems()
+                       
+                       // print(singleDate.key)//single date
+                        //singleSales.totalPrice = singleFoodItem.value as! Double
+                        if let singleFoodItem = singleDate.value as? [String: Any] {
+                            
+                            for singleFoodTotal in singleFoodItem {
                                 
-                                singleSales.foodName = singleItem.key
-                                singleSales.totalPrice = singleItem.value as! Double
-                                
-                                self.fooodItemsSold.append(singleSales)
-                                print(singleSales.foodName)
+                                print(singleFoodTotal.value)
+                                if let singleFoodTotalSub = singleFoodTotal.value as? [String: Any] {
+                                    
+                                    singleSales.foodName = singleFoodTotal.key
+                                    singleSales.totalPrice = singleFoodTotalSub["\(singleSales.foodName)"] as! Double
+                                    self.fooodItemsSold.append(singleSales)
+                                    print(singleSales.totalPrice)
+                                }
                             }
-                            self.allSales.append(SalesDetails(dateSales: singlecategory.key, fooodItemsSold: self.fooodItemsSold))
-                            print(self.allSales)
+                        }
+                        let replaced = singleDate.key.replacingOccurrences(of: "_", with: "-")
+                        var tfg = "2010-05-20"
+                        print(replaced)
+                        let ghf = dateFormatter.date(from: replaced)
+                        let dateInNY = replaced.toDate("yyyy-MM-dd")
+                       // let finalDateDBb = dateInNY?.toFormat("dd-MM-yyyy")
+                       print(ghf)
+                        
+                        if  dateInNY!.date.isAfterDate(self.datePickerFrom.date , orEqual: true, granularity: .year)
+                                && dateInNY!.date.isBeforeDate(self.datePickerTo.date ,orEqual: true, granularity: .year){
+                                
+                            self.allSales.append(SalesDetails(dateSales: replaced, fooodItemsSold: self.fooodItemsSold))
+                            self.fooodItemsSold = []
+                           // print(self.allSales)
                             DispatchQueue.main.async {
                                 self.accountTable.reloadData()
                             }
-//                            singleSales.foodName = singleFoodItem
-//                            placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
-//                            placedSingleFoodInfo.quantity = itemInfo["qunatity"] as! Int
-                            
-                            
-                           // print(singleFoodItem)
-                        }
-                       // print(singlecategory.value)
+                            }
                         
+                     
                     }
+                    
                 }
             }
-//        var placedOrder = SingleOrderDetails()
-//        var placedSingleFoodInfo = FoodItemOrder()
-//        placedOrder.orderID = item.key
-//        placedOrder.orderStatus = orderInfo["status"] as! String
-//        placedOrder.custName = orderInfo["customerName"] as! String
-//        print(placedOrder)
-//        if let orderItems = orderInfo["orderItems"] as? [Any]{
-//            for item in orderItems{
-//
-//                if let itemInfo = item as? [String:Any]{
-//                    placedOrder.custEmail = singlecategory.key
-//                    placedOrder.orderTotal += itemInfo["foodPrice"] as! Double
-//                    placedSingleFoodInfo.quantity = itemInfo["qunatity"] as! Int
-//                    placedSingleFoodInfo.foodName = itemInfo["foodName"] as! String
-//                    placedSingleFoodInfo.foodPrice = itemInfo["foodPrice"] as! Double
-        
-//        self.ref.child("orders")
-//            .observe(.value) { (snapshot) in
-//                if let categorys = snapshot.value as? [String: Any] {
-//                    self.categoryize = []
-//                    self.todayOrdersTest = []
-//                    self.orderCategoryArray[0].items = []
-//                    self.orderCategoryArray[1].items = []
-//                    for singlecategory in categorys {
-//                        // print(singlecategory.key)//email order single
-//
-//                        if let singleFoodItem = singlecategory.value as? [String: Any] {
-//
-//                            for item in singleFoodItem{
-//                                if let orderInfo = item.value as? [String:Any]{
     }
+    
 }
+
 
 extension AccountViewController{
     
@@ -146,15 +139,22 @@ extension AccountViewController{
         
         textfield.inputAccessoryView = toolBar
         
-        textfield.inputView = datePicker
+        textfield.inputView = datePickerFrom
         
         
-        datePicker.datePickerMode = .date
+        datePickerFrom.datePickerMode = .date
     }
     
     @objc func donePressed(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
         
-        fromDateField.text = datePicker.date.toFormat("dd-MM-yyyy")
+        //dateFormatter.timeStyle = .none
+        
+        fromDateField.text = dateFormatter.string(from: datePickerFrom.date)
+        
         self.view.endEditing(true)
     }
     
@@ -169,15 +169,23 @@ extension AccountViewController{
         
         textfield.inputAccessoryView = toolBar
         
-        textfield.inputView = datePicker
+        textfield.inputView = datePickerTo
         
         
-        datePicker.datePickerMode = .date
+        datePickerTo.datePickerMode = .date
     }
     
     @objc func donePressedTo(){
+       
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale.current
         
-        toDateField.text = datePicker.date.toFormat("dd-MM-yyyy")
+        toDateField.text = dateFormatter.string(from: datePickerTo.date)
+        
+        getSoldItemData()
         self.view.endEditing(true)
     }
 }
+
