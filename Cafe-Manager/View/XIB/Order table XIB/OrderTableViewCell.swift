@@ -68,17 +68,19 @@ class OrderTableViewCell: UITableViewCell {
             rejectButton.setTitleColor(.black, for: .normal)
             rejectButton.setTitle("Reject", for: .normal)
             rejectButtoncobtainer.isHidden = false
+            acceptButton.isEnabled = true
         }else if category.orderStatus == OrderStatus.ready.rawValue{
             
             rejectButtoncobtainer.isHidden = true
-            acceptButonContainer.backgroundColor = UIColor.orange
+            acceptButonContainer.backgroundColor = UIColor.green
             acceptButton.setTitleColor(.black, for: .normal)
-            acceptButton.setTitle("Arriving", for: .normal)
+            acceptButton.setTitle("Ready", for: .normal)
             acceptButton.isEnabled = false
             
         }else{
             
             rejectButtoncobtainer.isHidden = false
+            
         }
         
     }

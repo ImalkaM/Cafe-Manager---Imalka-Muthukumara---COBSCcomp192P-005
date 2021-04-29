@@ -51,8 +51,16 @@ struct K {
         
         
     }
+    struct accountCell {
+        static let nibNameAccountDetailsTable = "AccountTableViewCell"
+        static let accountTableCell = "AccountCell"
+       
+    }
     
-    
+    struct miniTable {
+        static let accountTableCellDetails = "itemCellAccount"
+        static let accountTableCellDetailsNib = "CellTableViewCell"
+    }
     
 }
 

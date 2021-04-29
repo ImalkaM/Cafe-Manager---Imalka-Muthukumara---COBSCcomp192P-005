@@ -25,6 +25,10 @@
 		AF877457263797F0005C9236 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF877456263797F0005C9236 /* Category.swift */; };
 		AF87745D2639176F005C9236 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87745C2639176F005C9236 /* AccountViewController.swift */; };
 		AF87746526391E57005C9236 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87746426391E57005C9236 /* Enum.swift */; };
+		AF87747426399C12005C9236 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87747226399C12005C9236 /* AccountTableViewCell.swift */; };
+		AF87747526399C12005C9236 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF87747326399C12005C9236 /* AccountTableViewCell.xib */; };
+		AF87747F2639A790005C9236 /* CellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87747D2639A790005C9236 /* CellTableViewCell.swift */; };
+		AF8774802639A790005C9236 /* CellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF87747E2639A790005C9236 /* CellTableViewCell.xib */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -84,6 +88,10 @@
 		AF877456263797F0005C9236 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		AF87745C2639176F005C9236 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		AF87746426391E57005C9236 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		AF87747226399C12005C9236 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		AF87747326399C12005C9236 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
+		AF87747D2639A790005C9236 /* CellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTableViewCell.swift; sourceTree = "<group>"; };
+		AF87747E2639A790005C9236 /* CellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellTableViewCell.xib; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +183,7 @@
 		AF75B2972627FFED00DF7789 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				AF87747126399BF1005C9236 /* Account Cell */,
 				AF75B3A0263512CF00DF7789 /* Order Detail XIB */,
 				AF75B3682633CC9500DF7789 /* Order table XIB */,
 				AF75B30C26306A7100DF7789 /* Food Preview Cell XIB */,
@@ -249,6 +258,25 @@
 				AF87745C2639176F005C9236 /* AccountViewController.swift */,
 			);
 			path = "Account View Controller";
+			sourceTree = "<group>";
+		};
+		AF87747126399BF1005C9236 /* Account Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF87747C2639A771005C9236 /* Cell table XIB */,
+				AF87747226399C12005C9236 /* AccountTableViewCell.swift */,
+				AF87747326399C12005C9236 /* AccountTableViewCell.xib */,
+			);
+			path = "Account Cell";
+			sourceTree = "<group>";
+		};
+		AF87747C2639A771005C9236 /* Cell table XIB */ = {
+			isa = PBXGroup;
+			children = (
+				AF87747D2639A790005C9236 /* CellTableViewCell.swift */,
+				AF87747E2639A790005C9236 /* CellTableViewCell.xib */,
+			);
+			path = "Cell table XIB";
 			sourceTree = "<group>";
 		};
 		AF923C1D26267F55001AD12C = {
@@ -496,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF75B31026306AB900DF7789 /* FoodPreviewTableViewCell.xib in Resources */,
+				AF87747526399C12005C9236 /* AccountTableViewCell.xib in Resources */,
 				AF923CA52626B6FD001AD12C /* GoogleService-Info.plist in Resources */,
 				AF75B29C2628001300DF7789 /* CategoryTableViewCell.xib in Resources */,
 				AF75B3A4263512F100DF7789 /* OrderDetailsTableViewCell.xib in Resources */,
@@ -503,6 +532,7 @@
 				AF923C3326267F58001AD12C /* Assets.xcassets in Resources */,
 				AF75B36C2633CCB800DF7789 /* OrderTableViewCell.xib in Resources */,
 				AF923C3126267F55001AD12C /* Main.storyboard in Resources */,
+				AF8774802639A790005C9236 /* CellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +665,7 @@
 				AF75B399263466D200DF7789 /* OrderDetailsViewController.swift in Sources */,
 				AF923C9D2626B541001AD12C /* ForgotPasswordViewController.swift in Sources */,
 				AF75B36B2633CCB800DF7789 /* OrderTableViewCell.swift in Sources */,
+				AF87747F2639A790005C9236 /* CellTableViewCell.swift in Sources */,
 				AF923C972626A546001AD12C /* CustomUI.swift in Sources */,
 				AF923CC72626BC23001AD12C /* CartHandler.swift in Sources */,
 				AF75B2AE26286D0700DF7789 /* AddItemViewController.swift in Sources */,
@@ -651,6 +682,7 @@
 				AF75B29B2628001300DF7789 /* CategoryTableViewCell.swift in Sources */,
 				AF923CC82626BC23001AD12C /* ValidatorFields.swift in Sources */,
 				AF923CCE2626BD0A001AD12C /* User.swift in Sources */,
+				AF87747426399C12005C9236 /* AccountTableViewCell.swift in Sources */,
 				AF75B3752633CFD500DF7789 /* OrderViewController.swift in Sources */,
 				AF877457263797F0005C9236 /* Category.swift in Sources */,
 			);

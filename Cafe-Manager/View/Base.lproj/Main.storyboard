@@ -485,20 +485,54 @@
         <!--ACCOUNT-->
         <scene sceneID="oFK-ZX-Wi2">
             <objects>
-                <viewController id="kOM-XQ-aM4" sceneMemberID="viewController">
+                <viewController id="kOM-XQ-aM4" customClass="AccountViewController" customModule="Cafe_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xnr-WR-SVU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zc-H8-N9T">
+                                <rect key="frame" x="15" y="10" width="106" height="33"/>
+                                <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="25"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGy-k0-g6d">
+                                <rect key="frame" x="15" y="48" width="85" height="30"/>
+                                <state key="normal" title="Print History"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-ZM-UEN">
+                                <rect key="frame" x="16" y="88" width="343" height="500"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kOM-XQ-aM4" id="Shk-Oz-6l0"/>
+                                    <outlet property="delegate" destination="kOM-XQ-aM4" id="Fme-sb-GXG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Xe3-NT-zct"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.86666666670000003" green="0.99997437" blue="0.99999129769999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="gRS-ZM-UEN" firstAttribute="leading" secondItem="Xe3-NT-zct" secondAttribute="leading" constant="16" id="1Ur-J9-AGI"/>
+                            <constraint firstItem="IGy-k0-g6d" firstAttribute="top" secondItem="5zc-H8-N9T" secondAttribute="bottom" constant="5" id="4X0-IP-OOw"/>
+                            <constraint firstItem="Xe3-NT-zct" firstAttribute="trailing" secondItem="gRS-ZM-UEN" secondAttribute="trailing" constant="16" id="6Rg-W6-JJL"/>
+                            <constraint firstItem="5zc-H8-N9T" firstAttribute="leading" secondItem="Xe3-NT-zct" secondAttribute="leading" constant="15" id="6mn-sr-YBN"/>
+                            <constraint firstItem="IGy-k0-g6d" firstAttribute="leading" secondItem="Xe3-NT-zct" secondAttribute="leading" constant="15" id="713-vt-Sin"/>
+                            <constraint firstItem="5zc-H8-N9T" firstAttribute="top" secondItem="Xe3-NT-zct" secondAttribute="top" constant="10" id="ROt-Bv-0aB"/>
+                            <constraint firstItem="Xe3-NT-zct" firstAttribute="bottom" secondItem="gRS-ZM-UEN" secondAttribute="bottom" constant="30" id="Xri-sh-2s5"/>
+                            <constraint firstItem="gRS-ZM-UEN" firstAttribute="centerX" secondItem="xnr-WR-SVU" secondAttribute="centerX" id="dvd-gC-Zot"/>
+                            <constraint firstItem="gRS-ZM-UEN" firstAttribute="top" secondItem="IGy-k0-g6d" secondAttribute="bottom" constant="10" id="wzm-Kz-oig"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="ACCOUNT" image="account" id="5Zb-0O-fuf">
                         <inset key="imageInsets" minX="0.0" minY="69" maxX="0.0" maxY="73"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="accountTable" destination="gRS-ZM-UEN" id="chU-Ib-3I5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Jr-e5-Ikh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="-200"/>
+            <point key="canvasLocation" x="1341.5999999999999" y="-200.14992503748127"/>
         </scene>
         <!--STORE-->
         <scene sceneID="iyP-JR-1ku">
@@ -922,7 +956,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iQd-g2-3C4"/>
+        <segue reference="0D5-0b-kKw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="account" width="170.5" height="170.5"/>
