@@ -49,7 +49,7 @@ class AccountTableViewCell: UITableViewCell {
         
         dateLabel.text = salesDeatails.dateSales
         print(salesDeatails)
-        
+        totalSales.text = String(salesDeatails.totalPriceAll)
         fooodItemsSold = salesDeatails.fooodItemsSold
        // print(fooodItemsSold)
 //        foodNameLabel.text = foodItem.foodName

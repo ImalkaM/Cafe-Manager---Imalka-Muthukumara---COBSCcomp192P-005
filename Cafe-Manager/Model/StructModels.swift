@@ -25,12 +25,6 @@ struct FoodItem {
     var image:String = ""
     var isAvailable:Bool = false
 }
-struct Category{
-    var categoryID: String = ""
-    var categoryName:String = ""
-
-}
-
 struct Order{
     var orderID: String = ""
     var orderStatus:String = "NEW"
@@ -74,7 +68,8 @@ struct SalesDetails {
 
 struct SoldFoodItems {
     var foodName:String = ""
-    var totalPrice:Double = 0.0 
+    var totalPrice:Double = 0.0
+    var fullAmount:Double = 0.0 
 }
 
 

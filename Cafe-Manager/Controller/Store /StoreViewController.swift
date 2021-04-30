@@ -42,8 +42,7 @@ class StoreViewController: UIViewController{
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        //getCategorys()
-        //getFoodItems()
+        
         getFoodItemsnew()
         
     }

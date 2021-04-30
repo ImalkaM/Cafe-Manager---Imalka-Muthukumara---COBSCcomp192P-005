@@ -9,18 +9,6 @@ import Foundation
 import Firebase
 
 
-//class CartHandler{
-//    static var fooditem:[CartItem] = []
-//    
-//    static func getCartItems() -> [CartItem]{
-//        return fooditem
-//    }
-//    
-//    static func clearCart(){
-//        self.fooditem.removeAll()
-//    }
-//}
-
 class StoreHandler{
     static var categoryCollection:[Category] = []
     static var categoryWiseFoods:[CategoryItems] = []
@@ -62,7 +50,7 @@ class StoreHandler{
         for categorys in StoreHandler.categoryCollection{
             
             ref.child("FoodItemsCafe").child(categorys.categoryName)
-                .observeSingleEvent(of:.value) { (snapshot) in
+                .observe(.value) { (snapshot) in
                     print(categorys.categoryName)
                     StoreHandler.foodItemArray = []
                     

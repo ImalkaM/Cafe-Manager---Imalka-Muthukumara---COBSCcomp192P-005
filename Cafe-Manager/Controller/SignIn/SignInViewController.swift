@@ -8,10 +8,14 @@
 import UIKit
 import Loaf
 import Firebase
+import CoreLocation
 
 class SignInViewController: UIViewController {
     
     var ref: DatabaseReference!
+    
+    let locationManager = CLLocationManager()
+    
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -28,7 +32,8 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        createSpinnerView()
+        
+       
         if !FieldValidator.isValidEmail(emailField.text ?? ""){
             Loaf("Invalid email address", state: .error, sender: self).show()
             return
@@ -46,7 +51,7 @@ class SignInViewController: UIViewController {
         print(orders)
     }
     func auhtenticateUser(email:String,password:String){
-        
+        createSpinnerView()
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let err =  error{
                 Loaf("\(err.localizedDescription)", state: .error, sender: self).show()

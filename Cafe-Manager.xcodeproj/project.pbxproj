@@ -31,6 +31,7 @@
 		AF8774802639A790005C9236 /* CellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF87747E2639A790005C9236 /* CellTableViewCell.xib */; };
 		AF8774B1263BA798005C9236 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774B0263BA798005C9236 /* SpinnerViewController.swift */; };
 		AF8774C0263C31BF005C9236 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774BF263C31BF005C9236 /* DataService.swift */; };
+		AF8774CB263C4D39005C9236 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774CA263C4D39005C9236 /* CategoryModel.swift */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -44,7 +45,7 @@
 		AF923C9D2626B541001AD12C /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C9C2626B541001AD12C /* ForgotPasswordViewController.swift */; };
 		AF923CA52626B6FD001AD12C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF923CA42626B6FD001AD12C /* GoogleService-Info.plist */; };
 		AF923CC62626BC23001AD12C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC22626BC22001AD12C /* SessionManager.swift */; };
-		AF923CC72626BC23001AD12C /* CartHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC32626BC22001AD12C /* CartHandler.swift */; };
+		AF923CC72626BC23001AD12C /* StoreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC32626BC22001AD12C /* StoreHandler.swift */; };
 		AF923CC82626BC23001AD12C /* ValidatorFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC42626BC22001AD12C /* ValidatorFields.swift */; };
 		AF923CC92626BC23001AD12C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC52626BC23001AD12C /* Constants.swift */; };
 		AF923CCE2626BD0A001AD12C /* StructModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CCD2626BD0A001AD12C /* StructModels.swift */; };
@@ -96,6 +97,7 @@
 		AF87747E2639A790005C9236 /* CellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellTableViewCell.xib; sourceTree = "<group>"; };
 		AF8774B0263BA798005C9236 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		AF8774BF263C31BF005C9236 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		AF8774CA263C4D39005C9236 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,7 +117,7 @@
 		AF923C9C2626B541001AD12C /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		AF923CA42626B6FD001AD12C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF923CC22626BC22001AD12C /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		AF923CC32626BC22001AD12C /* CartHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartHandler.swift; sourceTree = "<group>"; };
+		AF923CC32626BC22001AD12C /* StoreHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreHandler.swift; sourceTree = "<group>"; };
 		AF923CC42626BC22001AD12C /* ValidatorFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorFields.swift; sourceTree = "<group>"; };
 		AF923CC52626BC23001AD12C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF923CCD2626BD0A001AD12C /* StructModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructModels.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			children = (
 				AF923CCD2626BD0A001AD12C /* StructModels.swift */,
 				AF877456263797F0005C9236 /* Category.swift */,
+				AF8774CA263C4D39005C9236 /* CategoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -391,7 +394,7 @@
 		AF923C952626A4FA001AD12C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AF923CC32626BC22001AD12C /* CartHandler.swift */,
+				AF923CC32626BC22001AD12C /* StoreHandler.swift */,
 				AF923CC52626BC23001AD12C /* Constants.swift */,
 				AF923CC22626BC22001AD12C /* SessionManager.swift */,
 				AF923CC42626BC22001AD12C /* ValidatorFields.swift */,
@@ -673,7 +676,7 @@
 				AF75B36B2633CCB800DF7789 /* OrderTableViewCell.swift in Sources */,
 				AF87747F2639A790005C9236 /* CellTableViewCell.swift in Sources */,
 				AF923C972626A546001AD12C /* CustomUI.swift in Sources */,
-				AF923CC72626BC23001AD12C /* CartHandler.swift in Sources */,
+				AF923CC72626BC23001AD12C /* StoreHandler.swift in Sources */,
 				AF75B2AE26286D0700DF7789 /* AddItemViewController.swift in Sources */,
 				AF8774C0263C31BF005C9236 /* DataService.swift in Sources */,
 				AF87746526391E57005C9236 /* Enum.swift in Sources */,
@@ -691,6 +694,7 @@
 				AF923CC82626BC23001AD12C /* ValidatorFields.swift in Sources */,
 				AF923CCE2626BD0A001AD12C /* StructModels.swift in Sources */,
 				AF87747426399C12005C9236 /* AccountTableViewCell.swift in Sources */,
+				AF8774CB263C4D39005C9236 /* CategoryModel.swift in Sources */,
 				AF75B3752633CFD500DF7789 /* OrderViewController.swift in Sources */,
 				AF877457263797F0005C9236 /* Category.swift in Sources */,
 			);

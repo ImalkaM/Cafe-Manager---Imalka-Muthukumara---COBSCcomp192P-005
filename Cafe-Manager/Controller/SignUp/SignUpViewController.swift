@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
         setupCustomUI()
     }
     @IBAction func registerTapped(_ sender: UIButton) {
-        createSpinnerView()
+       
         if let name = nameField.text{
             if name.isEmpty{
                 Loaf("Name cannot be empty!", state: .error, sender: self).show()
@@ -59,7 +59,7 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController{
     func registerUser(email:String,password:String){
-        
+        createSpinnerView()
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let err =  error{
                 Loaf("\(err.localizedDescription)", state: .error, sender: self).show()
@@ -113,7 +113,7 @@ extension SignUpViewController{
         child.didMove(toParent: self)
 
         // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()

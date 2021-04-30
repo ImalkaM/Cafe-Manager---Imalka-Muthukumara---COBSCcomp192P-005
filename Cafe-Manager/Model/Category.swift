@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+struct Category{
+    var categoryID: String = ""
+    var categoryName:String = ""
+
+}

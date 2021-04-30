@@ -24,7 +24,7 @@ class OrderViewController: UIViewController {
     
    var orderCategoryArray = [OrderItemsCategory]()
     
-    var titles:[String] = ["Neww","Ready"]
+    var titles:[String] = ["New","Ready"]
     
     var categoryize:[OrderItemsCategory] = []
     var date:Double = 0.0

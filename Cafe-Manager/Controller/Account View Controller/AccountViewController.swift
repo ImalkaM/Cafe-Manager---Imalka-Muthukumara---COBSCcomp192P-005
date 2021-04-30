@@ -83,6 +83,8 @@ extension AccountViewController{
     
     func getSoldItemData(){
         
+        var tempTotal = 0.0
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         dateFormatter.timeStyle = .none
@@ -107,34 +109,33 @@ extension AccountViewController{
                                     
                                     singleSales.foodName = singleFoodTotal.key
                                     singleSales.totalPrice = singleFoodTotalSub["\(singleSales.foodName)"] as! Double
-                                    self.fooodItemsSold.append(singleSales)
-                                    print(singleSales.totalPrice)
+                                    tempTotal += singleSales.totalPrice
+                                   
+                                    //print(singleSales.totalPrice)
                                 }
+                                self.fooodItemsSold.append(singleSales)
                             }
+                           
                         }
                         
                         let replaced = singleDate.key.replacingOccurrences(of: "_", with: "-")
-                        //var tfg = "2010-05-20"
-                        // print(replaced)
-                        // let ghf = dateFormatter.date(from: replaced)
                         let datefromDB = replaced.toDate()
-                        print(self.datePickerFrom.date.inDefaultRegion())
+                        //print(self.datePickerFrom.date.inDefaultRegion())
                         let dbDateComapreRangeOrEqual =
                             datefromDB!.isInRange(date: self.datePickerFrom.date.inDefaultRegion(), and: self.datePickerTo.date.inDefaultRegion(),orEqual: true,granularity: .day)
                         let dbLeassThanToDateOrEqual = datefromDB!.isBeforeDate(self.datePickerTo.date.inDefaultRegion(), orEqual: true, granularity: .day)
-                        print(self.datePickerFrom.date)
+                        //print(self.datePickerFrom.date)
                         if  dbDateComapreRangeOrEqual && dbLeassThanToDateOrEqual
                         
                         {
-                            
-                            self.allSales.append(SalesDetails(dateSales: replaced, fooodItemsSold: self.fooodItemsSold))
+                            self.allSales.append(SalesDetails(dateSales: replaced,totalPriceAll: tempTotal, fooodItemsSold: self.fooodItemsSold))
+                            tempTotal = 0.0
                             self.fooodItemsSold = []
                             // print(self.allSales)
                             DispatchQueue.main.async {
                                 self.accountTable.reloadData()
                             }
                         }
-                        
                         
                     }
                     

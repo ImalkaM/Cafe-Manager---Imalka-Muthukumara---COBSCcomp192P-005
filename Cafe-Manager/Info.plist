@@ -62,13 +62,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>This app wants to take pictures.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app wants to use your photos.</string>
-    <key>LSApplicationQueriesSchemes</key>
-             <array>
-                     <string>tel</string>
-             </array>
+	<key>NSCameraUsageDescription</key>
+	<string>This app wants to take pictures.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app wants to use your photos.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App need to access you location.</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
+	</array>
 </dict>
 </plist>

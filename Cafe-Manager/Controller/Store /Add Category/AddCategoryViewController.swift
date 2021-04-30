@@ -11,8 +11,8 @@ import Loaf
 
 class AddCategoryViewController: UIViewController {
     var ref: DatabaseReference!
-    var category:Category = Category(categoryID: "", categoryName: "")
-   //var categoryCollection:[Category] = []
+    var category:Category = Category()
+   var categoryCollection:[Category] = []
     
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
@@ -24,8 +24,7 @@ class AddCategoryViewController: UIViewController {
         ref = Database.database().reference()
         setupCustomUI()
         categoryTable.register(UINib(nibName: K.category.nibNameCategoryTable, bundle: nil), forCellReuseIdentifier: K.category.categoryTableCell)
-        StoreHandler.getCategorys(ref: ref)
-       // getCategorys()
+        getCategorys()
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -84,28 +83,28 @@ class AddCategoryViewController: UIViewController {
 //            }
 //        }
     
-//    func getCategorys(){
-//
-//        self.ref.child("category").observe(.value) { (snapshot) in
-//            if let data = snapshot.value{
-//                if let orders = data as? [String:Any]{
-//                   StoreHandler.categoryCollection.removeAll()
-//                    for singleCategory in orders{
-//                        if let categoryInfo = singleCategory.value as? [String:Any]{
-//                            self.category.categoryName = categoryInfo["categoryName"] as! String
-//                            self.category.categoryID = singleCategory.key
-//                            StoreHandler.categoryCollection.append(self.category)
-//                        }
-//                    }
-//                    self.categoryTable.reloadData()
-//                }
-//            }
-//        }
-//    }
+    func getCategorys(){
+
+        self.ref.child("category").observe(.value) { (snapshot) in
+            if let data = snapshot.value{
+                if let orders = data as? [String:Any]{
+                   self.categoryCollection.removeAll()
+                    for singleCategory in orders{
+                        if let categoryInfo = singleCategory.value as? [String:Any]{
+                            self.category.categoryName = categoryInfo["categoryName"] as! String
+                            self.category.categoryID = singleCategory.key
+                            self.categoryCollection.append(self.category)
+                        }
+                    }
+                    self.categoryTable.reloadData()
+                }
+            }
+        }
+    }
     
     func deleteCategory(index:Int){
         
-        self.ref.child("category").child(StoreHandler.categoryCollection[index].categoryID).removeValue { (err, ref) in
+        self.ref.child("category").child(self.categoryCollection[index].categoryID).removeValue { (err, ref) in
             if err != nil{
                 
             }
@@ -115,13 +114,13 @@ class AddCategoryViewController: UIViewController {
 
 extension AddCategoryViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StoreHandler.categoryCollection.count
+        return self.categoryCollection.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = categoryTable.dequeueReusableCell(withIdentifier: K.category.categoryTableCell, for: indexPath) as! CategoryTableViewCell
         
-        cell.setupUI(category: StoreHandler.categoryCollection[indexPath.row])
+        cell.setupUI(category: self.categoryCollection[indexPath.row])
         //cell.setupUI(order: orders[indexPath.row])
         
         return cell
@@ -134,10 +133,10 @@ extension AddCategoryViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteCategory(index: indexPath.row)
-            StoreHandler.categoryCollection.remove(at: indexPath.row)
+            self.categoryCollection.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            StoreHandler.categoryCollection.removeAll()
-            StoreHandler.getCategorys(ref: ref)
+            self.categoryCollection.removeAll()
+            self.getCategorys()
             DispatchQueue.main.async {
                 self.categoryTable.reloadData()
             }
