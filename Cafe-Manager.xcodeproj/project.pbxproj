@@ -46,7 +46,7 @@
 		AF923CC72626BC23001AD12C /* CartHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC32626BC22001AD12C /* CartHandler.swift */; };
 		AF923CC82626BC23001AD12C /* ValidatorFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC42626BC22001AD12C /* ValidatorFields.swift */; };
 		AF923CC92626BC23001AD12C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CC52626BC23001AD12C /* Constants.swift */; };
-		AF923CCE2626BD0A001AD12C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CCD2626BD0A001AD12C /* User.swift */; };
+		AF923CCE2626BD0A001AD12C /* StructModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923CCD2626BD0A001AD12C /* StructModels.swift */; };
 		C59FB59B620A7581D129BB56 /* Pods_Cafe_Manager_Cafe_ManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF9759911B99672EB5AC814 /* Pods_Cafe_Manager_Cafe_ManagerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -116,7 +116,7 @@
 		AF923CC32626BC22001AD12C /* CartHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartHandler.swift; sourceTree = "<group>"; };
 		AF923CC42626BC22001AD12C /* ValidatorFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidatorFields.swift; sourceTree = "<group>"; };
 		AF923CC52626BC23001AD12C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		AF923CCD2626BD0A001AD12C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AF923CCD2626BD0A001AD12C /* StructModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructModels.swift; sourceTree = "<group>"; };
 		BB03F80ED156BB32D4CB10E3 /* Pods-Cafe-Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cafe-Manager.release.xcconfig"; path = "Target Support Files/Pods-Cafe-Manager/Pods-Cafe-Manager.release.xcconfig"; sourceTree = "<group>"; };
 		BFF9759911B99672EB5AC814 /* Pods_Cafe_Manager_Cafe_ManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cafe_Manager_Cafe_ManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3E2FF9B761FC22C96D9B02 /* Pods-Cafe-Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cafe-Manager.debug.xcconfig"; path = "Target Support Files/Pods-Cafe-Manager/Pods-Cafe-Manager.debug.xcconfig"; sourceTree = "<group>"; };
@@ -341,7 +341,7 @@
 		AF923C7D26268A99001AD12C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AF923CCD2626BD0A001AD12C /* User.swift */,
+				AF923CCD2626BD0A001AD12C /* StructModels.swift */,
 				AF877456263797F0005C9236 /* Category.swift */,
 			);
 			path = Model;
@@ -685,7 +685,7 @@
 				AF75B3A3263512F000DF7789 /* OrderDetailsTableViewCell.swift in Sources */,
 				AF75B29B2628001300DF7789 /* CategoryTableViewCell.swift in Sources */,
 				AF923CC82626BC23001AD12C /* ValidatorFields.swift in Sources */,
-				AF923CCE2626BD0A001AD12C /* User.swift in Sources */,
+				AF923CCE2626BD0A001AD12C /* StructModels.swift in Sources */,
 				AF87747426399C12005C9236 /* AccountTableViewCell.swift in Sources */,
 				AF75B3752633CFD500DF7789 /* OrderViewController.swift in Sources */,
 				AF877457263797F0005C9236 /* Category.swift in Sources */,

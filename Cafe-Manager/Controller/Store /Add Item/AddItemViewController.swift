@@ -72,7 +72,7 @@ class AddItemViewController: UIViewController {
 
             let f = "foodImage/" + UUID().uuidString + ".jpg"
             let ref = Storage.storage().reference().child(f)
-            createSpinnerView() 
+            createSpinnerView()
             ref.putData(d, metadata: md) { (metadata, error) in
                 if error == nil {
                     ref.downloadURL(completion: { (url, error) in
@@ -91,12 +91,9 @@ class AddItemViewController: UIViewController {
                     print("error \(String(describing: error))")
                 }
             }
-            
-            
-           
+          
         }
     }
-    
     
     @IBAction func onClickDropButton(_ sender: Any) {
         dropDownTable.reloadData()
@@ -187,8 +184,6 @@ class AddItemViewController: UIViewController {
             }
     }
 }
-
-
 
 extension AddItemViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

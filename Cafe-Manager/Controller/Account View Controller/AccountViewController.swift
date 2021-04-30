@@ -42,6 +42,12 @@ class AccountViewController: UIViewController{
 }
 extension AccountViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if allSales.count == 0{
+            self.accountTable.setEmptyMessage("Please select a Date Range To Show Sales Report")
+        } else{
+            self.accountTable.restore()
+        }
+        
         return allSales.count
     }
     
@@ -189,4 +195,5 @@ extension AccountViewController{
         self.view.endEditing(true)
     }
 }
+
 

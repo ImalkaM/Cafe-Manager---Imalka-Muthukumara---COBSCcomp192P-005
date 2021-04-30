@@ -51,7 +51,6 @@ class OrderDetailsViewController: UIViewController {
         }
         tempFooditemFB = tempFooditem
         print(tempFooditemFB)
-        ggnew()
     }
     
     @IBAction func statusButtonTapped(_ sender: UIButton) {
@@ -67,7 +66,7 @@ class OrderDetailsViewController: UIViewController {
             if let error = error {
                 //error
             } else {
-                self.gg1()
+                self.updateSales()
                // self.gg()
                 //self.getFoodItems()
                 //self.foodItemArray.remove(at: indexPath.row)
@@ -77,96 +76,88 @@ class OrderDetailsViewController: UIViewController {
            
     }
     
-    func gg(){
-        
-        for item in tempFooditem{
-//                let userData = [
-//                    "\(item.foodName)" : item.foodPrice
-//                ]
-           
-            ref.child("sales").child("\(currentDate.toFormat("dd_MM_yyyy"))")
-                .child("\(item.foodName)")
-                .observeSingleEvent(of:.value, with: { (snapshot) in
-              // Get user value
-                    print(self.currentDate.toFormat("dd_MM_yyyy"))
-                    if let categorys = snapshot.value as?  Double {
-                        print(categorys)
-                        self.ref.child("sales/\(self.currentDate.toFormat("dd_MM_yyyy"))/\(item.foodName)").setValue(item.foodPrice + categorys){ (error, ref) in
-                            if let err =  error{
-                                Loaf("\(err.localizedDescription)", state: .error, sender: self).show()
-                            }
-                            else{
-                                //                        Loaf("User Registered successfully", state: .success, sender: self).show()
-                                self.dismiss(animated: true, completion: nil)
-                            }
-                        }
-                                     
-                        
-                       // print(categorys)
-                    }
-                    
-                   
-             //let user = User(username: username)
+//    func gg(){
 //
-              }) { (error) in
-                print(error.localizedDescription)
-            }
-            //self.ref.child("users/\(user.uid)/username").setValue(username)
-
-        }
-        
-//        self.ref.child("orders")
-//            .observe(.value) { (snapshot) in
+//        for item in tempFooditem{
+////                let userData = [
+////                    "\(item.foodName)" : item.foodPrice
+////                ]
+//
+//            ref.child("sales").child("\(currentDate.toFormat("dd_MM_yyyy"))")
+//                .child("\(item.foodName)")
+//                .observeSingleEvent(of:.value, with: { (snapshot) in
+//              // Get user value
+//                    print(self.currentDate.toFormat("dd_MM_yyyy"))
+//                    if let categorys = snapshot.value as?  Double {
+//                        print(categorys)
+//                        self.ref.child("sales/\(self.currentDate.toFormat("dd_MM_yyyy"))/\(item.foodName)").setValue(item.foodPrice + categorys){ (error, ref) in
+//                            if let err =  error{
+//                                Loaf("\(err.localizedDescription)", state: .error, sender: self).show()
+//                            }
+//                            else{
+//                                //                        Loaf("User Registered successfully", state: .success, sender: self).show()
+//                                self.dismiss(animated: true, completion: nil)
+//                            }
+//                        }
+//
+//
+//                       // print(categorys)
+//                    }
+//
+//
+//             //let user = User(username: username)
+////
+//              }) { (error) in
+//                print(error.localizedDescription)
+//            }
+//            //self.ref.child("users/\(user.uid)/username").setValue(username)
+//
+//        }
+//
+////        self.ref.child("orders")
+////            .observe(.value) { (snapshot) in
+////                if let categorys = snapshot.value as? [String: Any] {
+////                    self.categoryize = []
+////                    self.todayOrdersTest = []
+////                    self.orderCategoryArray[0].items = []
+////                    self.orderCategoryArray[1].items = []
+////                    for singlecategory in categorys {
+//    }
+    
+    
+//    func ggnew(){
+//
+//        ref.child("sales").child("\(currentDate.toFormat("dd_MM_yyyy"))")
+//            .observeSingleEvent(of:.value, with: { (snapshot) in
+//                print(self.currentDate.toFormat("dd_MM_yyyy"))
 //                if let categorys = snapshot.value as? [String: Any] {
-//                    self.categoryize = []
-//                    self.todayOrdersTest = []
-//                    self.orderCategoryArray[0].items = []
-//                    self.orderCategoryArray[1].items = []
-//                    for singlecategory in categorys {
-    }
-    
-    
-    func ggnew(){
-        
-        ref.child("sales").child("\(currentDate.toFormat("dd_MM_yyyy"))")
-            .observeSingleEvent(of:.value, with: { (snapshot) in
-                print(self.currentDate.toFormat("dd_MM_yyyy"))
-                if let categorys = snapshot.value as? [String: Any] {
-                    
-                    
-                    print(categorys.keys)
-                                 
-                    
-                   // print(categorys)
-                }
-                
-               
-         //let user = User(username: username)
 //
-          }) { (error) in
-            print(error.localizedDescription)
-        }
-
-    }
-    func gg1(){
+//
+//                    print(categorys.keys)
+//
+//
+//                   // print(categorys)
+//                }
+//
+//
+//         //let user = User(username: username)
+////
+//          }) { (error) in
+//            print(error.localizedDescription)
+//        }
+//
+//    }
+    func updateSales(){
         
         for item in tempFooditem{
                 let userData = [
                     "\(item.foodName)" : item.foodPrice
                 ]
             //var tfg = "2010-05-20"
-            print(currentDate.toFormat("yyyy_MM_dd"))
+            //print(currentDate.toFormat("yyyy_MM_dd"))
             ref.child("sales").child("\(currentDate.toFormat("yyyy_MM_dd"))")
                 .child(item.foodName)
                 .updateChildValues(userData)
-            
-            //gg()
-              // Get user value
-            
-                   
-             //let user = User(username: username)
-//
-            //self.ref.child("users/\(user.uid)/username").setValue(username)
 
         }
     }
