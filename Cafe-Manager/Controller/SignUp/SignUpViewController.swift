@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
         setupCustomUI()
     }
     @IBAction func registerTapped(_ sender: UIButton) {
-        
+        createSpinnerView()
         if let name = nameField.text{
             if name.isEmpty{
                 Loaf("Name cannot be empty!", state: .error, sender: self).show()
@@ -103,6 +103,22 @@ extension SignUpViewController{
     @IBAction func signInTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
     
 }

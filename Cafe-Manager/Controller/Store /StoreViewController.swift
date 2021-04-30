@@ -53,6 +53,24 @@ class StoreViewController: UIViewController{
         CustomUI.setupAuthButton(btnCustom: categoryBtn)
     }
     
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+    }
+    
 }
 
 extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
@@ -150,7 +168,7 @@ extension StoreViewController{
 //        }
 //    }
     func getFoodItemsnew(){
-        
+        createSpinnerView()
         self.categoryWiseFoods = []
         
         //for categorys in StoreHandler.categoryCollection{
