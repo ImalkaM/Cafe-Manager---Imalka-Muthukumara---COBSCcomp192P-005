@@ -27,13 +27,13 @@ class StoreViewController: UIViewController{
     var foodItemArray:[FoodItem] = []
     
     private let refreshControl = UIRefreshControl()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //getCategorys()
         
-       // getFoodItemsadss()
+        // getFoodItemsadss()
         //getFoodItems()
         ref = Database.database().reference()
         previewTable.register(UINib(nibName: K.previewTable.nibNameCategoryTable, bundle: nil), forCellReuseIdentifier: K.previewTable.categoryTableCell)
@@ -45,7 +45,7 @@ class StoreViewController: UIViewController{
         //getCategorys()
         //getFoodItems()
         getFoodItemsnew()
-       
+        
     }
     func setupCustomUI(){
         CustomUI.setupAuthButton(btnCustom: previewBtn)
@@ -55,15 +55,15 @@ class StoreViewController: UIViewController{
     
     func createSpinnerView() {
         let child = SpinnerViewController()
-
+        
         // add the spinner view controller
         addChild(child)
         child.view.frame = view.frame
         view.addSubview(child.view)
         child.didMove(toParent: self)
-
+        
         // wait two seconds to simulate some work happening
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
@@ -76,8 +76,8 @@ class StoreViewController: UIViewController{
 extension StoreViewController:UITableViewDataSource,foodAvailableDelegate,UITableViewDelegate {
     
     func availableButtonToggled(at indexPath: IndexPath,isOn: Bool, foodItem: FoodItem) {
-       
-       // print(self.categoryWiseFoods[indexPath.section].name)
+        
+        // print(self.categoryWiseFoods[indexPath.section].name)
         ref.child("FoodItemsCafe").child(self.categoryWiseFoods[indexPath.section].name).child(foodItem.id).child("available").setValue(isOn){
             (error:Error?, ref:DatabaseReference) in
             if let error = error {
@@ -132,59 +132,15 @@ extension StoreViewController:UITableViewDataSource,foodAvailableDelegate,UITabl
 
 extension StoreViewController{
     
-//    func getFoodItems(){
-//
-//        self.categoryWiseFoods = []
-//
-//        for categorys in StoreHandler.categoryCollection{
-//
-//            self.ref.child("FoodItemsCafe").child(categorys.categoryName)
-//                .observeSingleEvent(of:.value) { (snapshot) in
-//                    print(categorys.categoryName)
-//                    self.foodItemArray = []
-//                    self.categoryWiseFoods = []
-//                    if let data = snapshot.value {
-//
-//                        if let foodItems = data as? [String:Any]{
-//                            // print(foodItems.keys)
-//                            for singleItem in foodItems{
-//                                //print(singleItem)
-//                                if let itemInfo = singleItem.value as? [String:Any]{
-//                                    var foodItems = FoodItem()
-//                                    foodItems.id = singleItem.key
-//                                    foodItems.foodName = itemInfo["foodName"] as! String
-//                                    foodItems.foodDescription = itemInfo["foodDescription"] as! String
-//                                    foodItems.foodPrice = itemInfo["price"] as! Double
-//                                    foodItems.discount = itemInfo["discount"] as! Int
-//                                    foodItems.isAvailable = itemInfo["available"] as! Bool
-//                                    foodItems.image = itemInfo["imageURL"] as! String
-//
-//
-//                                    self.foodItemArray.append(foodItems)
-//
-//                                }
-//
-//                            }
-//                                self.categoryWiseFoods.append(CategoryItems(name: categorys.categoryName, items: self.foodItemArray))
-//
-//                        }
-//                    }
-//                    DispatchQueue.main.async {
-//                        self.previewTable.reloadData()
-//                    }
-//                }
-//
-//        }
-//    }
     func getFoodItemsnew(){
         createSpinnerView()
         self.categoryWiseFoods = []
         
         //for categorys in StoreHandler.categoryCollection{
-       
+        
         self.ref.child("FoodItemsCafe")
             .observeSingleEvent(of:.value) { (snapshot) in
-               
+                
                 self.categoryWiseFoods = []
                 if let categorys = snapshot.value as? [String: Any] {
                     
@@ -194,7 +150,7 @@ extension StoreViewController{
                             for foodItemDetail in singleFoodItem {
                                 var foodItems = FoodItem()
                                 if let itemInfo = foodItemDetail.value as? [String:Any]{
-                                   
+                                    
                                     foodItems.id = foodItemDetail.key
                                     foodItems.foodName = itemInfo["foodName"] as! String
                                     foodItems.foodDescription = itemInfo["foodDescription"] as! String
@@ -204,83 +160,23 @@ extension StoreViewController{
                                     foodItems.image = itemInfo["imageURL"] as! String
                                     
                                     print(foodItems)
-                                   
+                                    
                                 }
                                 //print(foodItemDetails.key)//single item key
-                               
+                                
                                 self.foodItemArray.append(foodItems)
                                 
                             }
-                           
+                            
                         }
                         self.categoryWiseFoods.append(CategoryItems(name: singlecategory.key, items: self.foodItemArray))
                         self.foodItemArray = []
                     }
                     DispatchQueue.main.async {
-                                            self.previewTable.reloadData()
-                                        }
+                        self.previewTable.reloadData()
+                    }
                 }
             }
     }
-//    func getFoodItemsadss(){
-//
-//        self.categoryWiseFoods = []
-//
-//
-//            self.ref.child("FoodItemsCafe").observe(.value) { (snapshot) in
-//                    self.foodItemArray = []
-//
-//                    if let data = snapshot.value {
-//                        print(data)
-//
-//                        if let foodItems = data as? [String:Any]{
-//                            print(foodItems.values)
-//                            for singleItem in foodItems{
-//                                print(singleItem)
-//                                if let itemInfo = singleItem.value as? [String:Any]{
-//                                    var foodItems = FoodItem()
-//                                    foodItems.id = singleItem.key
-//                                    foodItems.foodName = itemInfo["foodName"] as! String
-//                                    foodItems.foodDescription = itemInfo["foodDescription"] as! String
-//                                    foodItems.foodPrice = itemInfo["price"] as! Double
-//                                    foodItems.discount = itemInfo["discount"] as! Int
-//                                    foodItems.isAvailable = itemInfo["available"] as! Bool
-//                                    foodItems.image = itemInfo["imageURL"] as! String
-//
-//
-//                                    self.foodItemArray.append(foodItems)
-//
-//                                }
-//
-//                            }
-////                                self.categoryWiseFoods.append(CategoryItems(name: categorys.categoryName, items: self.foodItemArray))
-//
-//                        }
-//                    }
-//                    DispatchQueue.main.async {
-//                        self.previewTable.reloadData()
-//                    }
-//                }
-//
-//        }
     
-//    func getCategorys(){
-//
-//        self.ref.child("category").observe(.value) { (snapshot) in
-//            if let data = snapshot.value{
-//                if let orders = data as? [String:Any]{
-//                    StoreHandler.categoryCollection.removeAll()
-//                    for singleCategory in orders{
-//                        if let categoryInfo = singleCategory.value as? [String:Any]{
-//                            self.category.categoryName = categoryInfo["categoryName"] as! String
-//                            self.category.categoryID = singleCategory.key
-//                            StoreHandler.categoryCollection.append(self.category)
-//                        }
-//                    }
-//                    //  print(StoreHandler.categoryCollection)getFoodItems
-//                    self.getFoodItems()
-//                }
-//            }
-//        }
-//    }
 }

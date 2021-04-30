@@ -154,11 +154,7 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
 //        view.addSubview(lbl)
 //        return view
 //    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //return categoryize[section].name
-        return orderCategoryArray[section].name
-    }
+   
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = orderTable.dequeueReusableCell(withIdentifier: K.orderTable.orderTableCell, for: indexPath) as! OrderTableViewCell
@@ -179,6 +175,16 @@ extension OrderViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.3653766513, blue: 0.1507387459, alpha: 1)
+        
+        let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
+        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.text = orderCategoryArray[section].name
+        view.addSubview(lbl)
+        return view
     }
     
     

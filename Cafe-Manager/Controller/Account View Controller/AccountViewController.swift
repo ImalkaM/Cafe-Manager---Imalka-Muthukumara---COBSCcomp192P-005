@@ -39,6 +39,20 @@ class AccountViewController: UIViewController{
         
     }
     
+    @IBAction func logOutPressed(_ sender: UIButton) {
+        
+        if self.presentingViewController != nil {
+            self.dismiss(animated: false, completion: {
+                self.presentingViewController?.navigationController?.popViewController(animated: true)
+                
+            })
+        }
+        else {
+            self.presentingViewController?.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    
 }
 extension AccountViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
