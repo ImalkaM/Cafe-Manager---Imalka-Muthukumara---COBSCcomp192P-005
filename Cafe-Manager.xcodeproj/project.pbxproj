@@ -29,6 +29,7 @@
 		AF87747526399C12005C9236 /* AccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF87747326399C12005C9236 /* AccountTableViewCell.xib */; };
 		AF87747F2639A790005C9236 /* CellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87747D2639A790005C9236 /* CellTableViewCell.swift */; };
 		AF8774802639A790005C9236 /* CellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF87747E2639A790005C9236 /* CellTableViewCell.xib */; };
+		AF8774B1263BA798005C9236 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774B0263BA798005C9236 /* SpinnerViewController.swift */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		AF87747326399C12005C9236 /* AccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTableViewCell.xib; sourceTree = "<group>"; };
 		AF87747D2639A790005C9236 /* CellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTableViewCell.swift; sourceTree = "<group>"; };
 		AF87747E2639A790005C9236 /* CellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellTableViewCell.xib; sourceTree = "<group>"; };
+		AF8774B0263BA798005C9236 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				AF923CC42626BC22001AD12C /* ValidatorFields.swift */,
 				AF923C962626A546001AD12C /* CustomUI.swift */,
 				AF87746426391E57005C9236 /* Enum.swift */,
+				AF8774B0263BA798005C9236 /* SpinnerViewController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				AF75B23626275D5C00DF7789 /* AddCategoryViewController.swift in Sources */,
 				AF923C8E2626A3DB001AD12C /* SignUpViewController.swift in Sources */,
 				AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */,
+				AF8774B1263BA798005C9236 /* SpinnerViewController.swift in Sources */,
 				AF75B22A26274C9D00DF7789 /* StoreViewController.swift in Sources */,
 				AF923CC62626BC23001AD12C /* SessionManager.swift in Sources */,
 				AF75B3A3263512F000DF7789 /* OrderDetailsTableViewCell.swift in Sources */,

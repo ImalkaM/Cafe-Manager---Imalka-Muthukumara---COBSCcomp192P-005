@@ -10,7 +10,6 @@ import Firebase
 import SwiftDate
 
 class AccountViewController: UIViewController{
-    // let london = Region(calendar: .gregorian, zone: .europeLondon, locale: .italian)
     var ref: DatabaseReference!
     @IBOutlet weak var fromDateField: UITextField!
     @IBOutlet weak var toDateField: UITextField!
@@ -22,14 +21,6 @@ class AccountViewController: UIViewController{
     let datePickerTo = UIDatePicker()
     
     var currentDate:Date = Date()
-    var dateValue: Date? {
-        let dateAsString = "13:15"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+00:00")//Add this
-        let date = dateFormatter.date(from: dateAsString)
-        return date
-    }
     //var tempFooditem =  [SoldFoodItems]()
     var fooodItemsSold = [SoldFoodItems]()
     var allSales =  [SalesDetails]()
@@ -76,9 +67,6 @@ extension AccountViewController{
         dateFormatter.dateFormat = "dd-MM-yyyy"
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current
-        //  print(dateFormatter.string(from: datePickerTo.date))
-        
-        //   print(datePickerTo.date.date.toFormat("dd-MM-yyyy"))
         
         self.ref.child("sales")
             .observeSingleEvent(of: .value) { (snapshot) in
@@ -135,8 +123,6 @@ extension AccountViewController{
     }
     
 }
-
-
 extension AccountViewController{
     
     func createDatePickerFrom(textfield:UITextField){
