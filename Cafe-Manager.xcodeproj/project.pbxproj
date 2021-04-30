@@ -33,6 +33,8 @@
 		AF8774C0263C31BF005C9236 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774BF263C31BF005C9236 /* DataService.swift */; };
 		AF8774CB263C4D39005C9236 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774CA263C4D39005C9236 /* CategoryModel.swift */; };
 		AF8774D0263C715F005C9236 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774CF263C715F005C9236 /* SplashViewController.swift */; };
+		AF8774D5263C7B9B005C9236 /* UserSignInModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774D4263C7B9A005C9236 /* UserSignInModelTest.swift */; };
+		AF8774DA263C7C26005C9236 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774D9263C7C26005C9236 /* UserModel.swift */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -100,6 +102,8 @@
 		AF8774BF263C31BF005C9236 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		AF8774CA263C4D39005C9236 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		AF8774CF263C715F005C9236 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		AF8774D4263C7B9A005C9236 /* UserSignInModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignInModelTest.swift; sourceTree = "<group>"; };
+		AF8774D9263C7C26005C9236 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 		AF923C3F26267F58001AD12C /* Cafe-ManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				AF8774D4263C7B9A005C9236 /* UserSignInModelTest.swift */,
 				AF923C4026267F58001AD12C /* Cafe_ManagerTests.swift */,
 				AF923C4226267F58001AD12C /* Info.plist */,
 			);
@@ -350,6 +355,7 @@
 				AF923CCD2626BD0A001AD12C /* StructModels.swift */,
 				AF877456263797F0005C9236 /* Category.swift */,
 				AF8774CA263C4D39005C9236 /* CategoryModel.swift */,
+				AF8774D9263C7C26005C9236 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -700,6 +706,7 @@
 				AF87747426399C12005C9236 /* AccountTableViewCell.swift in Sources */,
 				AF8774CB263C4D39005C9236 /* CategoryModel.swift in Sources */,
 				AF75B3752633CFD500DF7789 /* OrderViewController.swift in Sources */,
+				AF8774DA263C7C26005C9236 /* UserModel.swift in Sources */,
 				AF877457263797F0005C9236 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,6 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8774D5263C7B9B005C9236 /* UserSignInModelTest.swift in Sources */,
 				AF923C4126267F58001AD12C /* Cafe_ManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
