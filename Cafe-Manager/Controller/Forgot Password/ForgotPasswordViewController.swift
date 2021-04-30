@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
+import Loaf
 
 class ForgotPasswordViewController: UIViewController {
 
@@ -17,11 +20,25 @@ class ForgotPasswordViewController: UIViewController {
     }
 
     @IBAction func resetTapped(_ sender: UIButton) {
+        
+        if let email = emailField.text{
+            
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let err = error{
+                    
+                }else{
+                    
+                }
+            }
+        }
+         
     }
     
     @IBAction func signInTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
     func setupCustomUI(){
         CustomUI.setupTextField(txtField: emailField)
        

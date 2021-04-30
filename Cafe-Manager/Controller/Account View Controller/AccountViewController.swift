@@ -22,6 +22,14 @@ class AccountViewController: UIViewController{
     let datePickerTo = UIDatePicker()
     
     var currentDate:Date = Date()
+    var dateValue: Date? {
+        let dateAsString = "13:15"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+00:00")//Add this
+        let date = dateFormatter.date(from: dateAsString)
+            return date
+           }
     //var tempFooditem =  [SoldFoodItems]()
     var fooodItemsSold = [SoldFoodItems]()
     var allSales =  [SalesDetails]()
@@ -38,7 +46,7 @@ class AccountViewController: UIViewController{
         createDatePickerFrom(textfield: fromDateField)
         createDatePickerTo(textfield: toDateField)
         
-        
+        print(dateValue)
     }
     
 }
