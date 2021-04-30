@@ -73,7 +73,7 @@ class StoreViewController: UIViewController{
     
 }
 
-extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
+extension StoreViewController:UITableViewDataSource,foodAvailableDelegate,UITableViewDelegate {
     
     func availableButtonToggled(at indexPath: IndexPath,isOn: Bool, foodItem: FoodItem) {
        
@@ -88,7 +88,16 @@ extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
             }
         }
     }
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.3653766513, blue: 0.1507387459, alpha: 1)
+        
+        let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
+        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.text = categoryWiseFoods[section].name
+        view.addSubview(lbl)
+        return view
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryWiseFoods[section].items.count
@@ -112,8 +121,8 @@ extension StoreViewController:UITableViewDataSource,foodAvailableDelegate {
         
         
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return categoryWiseFoods[section].name
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

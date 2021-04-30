@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -327,7 +326,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hCw-30-kHk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hCw-30-kHk">
                                 <rect key="frame" x="16" y="61" width="343" height="587"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -430,18 +429,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSZ-Gx-jbH">
-                                <rect key="frame" x="334.5" y="34" width="27.5" height="24.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="phone.bubble.left" catalog="system" symbolScale="large" renderingMode="original"/>
-                                </state>
-                                <connections>
-                                    <action selector="callButtonTapped:" destination="fNB-sr-It0" eventType="touchUpInside" id="f4z-Kp-ouA"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CiT-Tk-aR4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CiT-Tk-aR4">
                                 <rect key="frame" x="16" y="296" width="343" height="351"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -449,6 +437,35 @@
                                     <outlet property="delegate" destination="fNB-sr-It0" id="Yg7-YJ-vf8"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rob-2Q-YMu">
+                                <rect key="frame" x="309" y="20" width="50" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QX3-eZ-OfF">
+                                        <rect key="frame" x="0.0" y="0.5" width="50" height="49"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNw-fU-df6">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <connections>
+                                            <action selector="callButtonTapped:" destination="fNB-sr-It0" eventType="touchUpInside" id="IMz-Wb-WX9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ZNw-fU-df6" secondAttribute="trailing" id="9f7-uY-taZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZNw-fU-df6" secondAttribute="bottom" id="9fc-gK-Zcl"/>
+                                    <constraint firstAttribute="bottom" secondItem="QX3-eZ-OfF" secondAttribute="bottom" id="YsX-rM-1tn"/>
+                                    <constraint firstAttribute="height" constant="50" id="dA3-4d-SkE"/>
+                                    <constraint firstItem="ZNw-fU-df6" firstAttribute="leading" secondItem="rob-2Q-YMu" secondAttribute="leading" id="ffZ-5Y-1t2"/>
+                                    <constraint firstItem="ZNw-fU-df6" firstAttribute="top" secondItem="rob-2Q-YMu" secondAttribute="top" id="g3f-rZ-Dh9"/>
+                                    <constraint firstItem="QX3-eZ-OfF" firstAttribute="leading" secondItem="rob-2Q-YMu" secondAttribute="leading" id="hDS-MD-aRh"/>
+                                    <constraint firstAttribute="width" constant="50" id="srt-iU-eTS"/>
+                                    <constraint firstItem="QX3-eZ-OfF" firstAttribute="top" secondItem="rob-2Q-YMu" secondAttribute="top" id="x2W-2t-iy4"/>
+                                    <constraint firstAttribute="trailing" secondItem="QX3-eZ-OfF" secondAttribute="trailing" id="zBy-N2-yca"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="80j-HQ-Uef"/>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.99997437" blue="0.99999129769999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
@@ -457,14 +474,14 @@
                             <constraint firstItem="CiT-Tk-aR4" firstAttribute="top" secondItem="eBn-mm-LML" secondAttribute="bottom" constant="21.5" id="8wZ-VF-ZOA"/>
                             <constraint firstItem="CiT-Tk-aR4" firstAttribute="centerX" secondItem="ueb-eV-fRe" secondAttribute="centerX" id="Ju3-xo-ipf"/>
                             <constraint firstItem="w8E-Ek-1Nn" firstAttribute="leading" secondItem="80j-HQ-Uef" secondAttribute="leading" constant="16" id="Q9H-pc-DYZ"/>
-                            <constraint firstItem="OSZ-Gx-jbH" firstAttribute="top" secondItem="80j-HQ-Uef" secondAttribute="top" constant="34" id="WG0-Us-eOU"/>
                             <constraint firstItem="LXW-gn-JVJ" firstAttribute="leading" secondItem="80j-HQ-Uef" secondAttribute="leading" constant="32" id="WcS-ig-baf"/>
                             <constraint firstItem="eBn-mm-LML" firstAttribute="leading" secondItem="80j-HQ-Uef" secondAttribute="leading" constant="34" id="aVM-ow-tna"/>
-                            <constraint firstItem="80j-HQ-Uef" firstAttribute="trailing" secondItem="OSZ-Gx-jbH" secondAttribute="trailing" constant="13" id="cVb-TN-vEq"/>
                             <constraint firstItem="CiT-Tk-aR4" firstAttribute="leading" secondItem="80j-HQ-Uef" secondAttribute="leading" constant="16" id="d48-Wg-azc"/>
                             <constraint firstItem="LXW-gn-JVJ" firstAttribute="top" secondItem="w8E-Ek-1Nn" secondAttribute="bottom" constant="44" id="dsU-Bq-ouz"/>
                             <constraint firstItem="80j-HQ-Uef" firstAttribute="bottom" secondItem="CiT-Tk-aR4" secondAttribute="bottom" constant="20" id="gJZ-2v-Sm7"/>
+                            <constraint firstItem="rob-2Q-YMu" firstAttribute="top" secondItem="80j-HQ-Uef" secondAttribute="top" constant="20" id="i7y-lZ-Ecv"/>
                             <constraint firstItem="w8E-Ek-1Nn" firstAttribute="top" secondItem="80j-HQ-Uef" secondAttribute="top" constant="11" id="sjJ-j4-9pe"/>
+                            <constraint firstItem="80j-HQ-Uef" firstAttribute="trailing" secondItem="rob-2Q-YMu" secondAttribute="trailing" constant="16" id="uLu-Tm-CPG"/>
                             <constraint firstItem="eBn-mm-LML" firstAttribute="top" secondItem="LXW-gn-JVJ" secondAttribute="bottom" constant="28" id="xkN-Nf-Ap8"/>
                         </constraints>
                     </view>
@@ -992,7 +1009,7 @@
         <image name="account" width="170.5" height="170.5"/>
         <image name="checklist" width="170.5" height="170.5"/>
         <image name="mainLogo" width="256" height="256"/>
-        <image name="phone.bubble.left" catalog="system" width="128" height="110"/>
+        <image name="phone.circle" catalog="system" width="128" height="121"/>
         <image name="store" width="170.5" height="170.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

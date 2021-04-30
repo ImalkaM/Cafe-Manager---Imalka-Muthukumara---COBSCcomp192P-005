@@ -53,6 +53,20 @@ class OrderDetailsViewController: UIViewController {
         print(tempFooditemFB)
     }
     
+    @IBAction func callButtonTapped(_ sender: UIButton) {
+        callNumber(phoneNumber: "0771719212")
+        print("Tapped")
+    }
+    
+    private func callNumber(phoneNumber:String) {
+      if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
+        let application:UIApplication = UIApplication.shared
+        if (application.canOpenURL(phoneCallURL)) {
+            application.open(phoneCallURL, options: [:], completionHandler: nil)
+        }
+      }
+    }
+    
     @IBAction func statusButtonTapped(_ sender: UIButton) {
         
         performSegue(withIdentifier: K.orderDetailsTable.unwindSeauge, sender: self)
@@ -168,9 +182,7 @@ class OrderDetailsViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func callButtonTapped(_ sender: UIButton) {
-    }
+  
     @IBAction func backButtontapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
