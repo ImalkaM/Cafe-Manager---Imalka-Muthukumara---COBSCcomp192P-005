@@ -20,6 +20,8 @@ class AccountViewController: UIViewController{
     let datePickerFrom = UIDatePicker()
     let datePickerTo = UIDatePicker()
     
+    let sessionMgr = SessionManager()
+    
     var currentDate:Date = Date()
     //var tempFooditem =  [SoldFoodItems]()
     var fooodItemsSold = [SoldFoodItems]()
@@ -43,11 +45,13 @@ class AccountViewController: UIViewController{
         
         if self.presentingViewController != nil {
             self.dismiss(animated: false, completion: {
+                self.sessionMgr.clearUserState()
                 self.presentingViewController?.navigationController?.popViewController(animated: true)
                 
             })
         }
         else {
+            sessionMgr.clearUserState()
             self.presentingViewController?.navigationController?.popViewController(animated: true)
         }
     }

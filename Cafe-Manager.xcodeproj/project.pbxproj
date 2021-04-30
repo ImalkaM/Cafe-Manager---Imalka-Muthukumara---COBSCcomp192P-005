@@ -32,6 +32,7 @@
 		AF8774B1263BA798005C9236 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774B0263BA798005C9236 /* SpinnerViewController.swift */; };
 		AF8774C0263C31BF005C9236 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774BF263C31BF005C9236 /* DataService.swift */; };
 		AF8774CB263C4D39005C9236 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774CA263C4D39005C9236 /* CategoryModel.swift */; };
+		AF8774D0263C715F005C9236 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8774CF263C715F005C9236 /* SplashViewController.swift */; };
 		AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2926267F55001AD12C /* AppDelegate.swift */; };
 		AF923C2C26267F55001AD12C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF923C2B26267F55001AD12C /* SceneDelegate.swift */; };
 		AF923C3126267F55001AD12C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF923C2F26267F55001AD12C /* Main.storyboard */; };
@@ -98,6 +99,7 @@
 		AF8774B0263BA798005C9236 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		AF8774BF263C31BF005C9236 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		AF8774CA263C4D39005C9236 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		AF8774CF263C715F005C9236 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		AF923C2626267F55001AD12C /* Cafe-Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cafe-Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF923C2926267F55001AD12C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF923C2B26267F55001AD12C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				AF923C9B2626B525001AD12C /* Forgot Password */,
 				AF923C8C2626A3C9001AD12C /* SignUp */,
 				AF923C8B2626A3B8001AD12C /* SignIn */,
+				AF8774CF263C715F005C9236 /* SplashViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8774D0263C715F005C9236 /* SplashViewController.swift in Sources */,
 				AF923C8426268E7E001AD12C /* SignInViewController.swift in Sources */,
 				AF923C2A26267F55001AD12C /* AppDelegate.swift in Sources */,
 				AF75B399263466D200DF7789 /* OrderDetailsViewController.swift in Sources */,

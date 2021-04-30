@@ -58,7 +58,7 @@ class SignInViewController: UIViewController {
             }
             else{
                 if let email = authResult?.user.email{
-                    //self.getOrderData()
+                    self.getUserData(email: email)
                 }else{
                     Loaf("User not found!", state: .error, sender: self).show()
                 }
@@ -69,7 +69,7 @@ class SignInViewController: UIViewController {
     }
     func getUserData(email:String){
         
-        ref.child("users")
+        ref.child("usersCafeManager")
             .child(email .replacingOccurrences(of: "@", with: "_")
                     .replacingOccurrences(of: ".", with: "_")).observe(.value, with: {(snapshot) in
                         if snapshot.hasChildren(){
