@@ -10,7 +10,7 @@ import Firebase
 import SwiftDate
 
 class AccountViewController: UIViewController{
-   // let london = Region(calendar: .gregorian, zone: .europeLondon, locale: .italian)
+    // let london = Region(calendar: .gregorian, zone: .europeLondon, locale: .italian)
     var ref: DatabaseReference!
     @IBOutlet weak var fromDateField: UITextField!
     @IBOutlet weak var toDateField: UITextField!
@@ -28,8 +28,8 @@ class AccountViewController: UIViewController{
         dateFormatter.dateFormat = "HH:mm"
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+00:00")//Add this
         let date = dateFormatter.date(from: dateAsString)
-            return date
-           }
+        return date
+    }
     //var tempFooditem =  [SoldFoodItems]()
     var fooodItemsSold = [SoldFoodItems]()
     var allSales =  [SalesDetails]()
@@ -46,7 +46,6 @@ class AccountViewController: UIViewController{
         createDatePickerFrom(textfield: fromDateField)
         createDatePickerTo(textfield: toDateField)
         
-        print(dateValue)
     }
     
 }
@@ -77,9 +76,9 @@ extension AccountViewController{
         dateFormatter.dateFormat = "dd-MM-yyyy"
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current
-      //  print(dateFormatter.string(from: datePickerTo.date))
-       
-     //   print(datePickerTo.date.date.toFormat("dd-MM-yyyy"))
+        //  print(dateFormatter.string(from: datePickerTo.date))
+        
+        //   print(datePickerTo.date.date.toFormat("dd-MM-yyyy"))
         
         self.ref.child("sales")
             .observeSingleEvent(of: .value) { (snapshot) in
@@ -88,8 +87,8 @@ extension AccountViewController{
                     self.allSales = []
                     for singleDate in categorys {
                         var singleSales = SoldFoodItems()
-                       
-                       // print(singleDate.key)//single date
+                        
+                        // print(singleDate.key)//single date
                         //singleSales.totalPrice = singleFoodItem.value as! Double
                         if let singleFoodItem = singleDate.value as? [String: Any] {
                             
@@ -105,26 +104,30 @@ extension AccountViewController{
                                 }
                             }
                         }
-                        let replaced = singleDate.key.replacingOccurrences(of: "_", with: "-")
-                        var tfg = "2010-05-20"
-                        print(replaced)
-                        let ghf = dateFormatter.date(from: replaced)
-                        let dateInNY = replaced.toDate("yyyy-MM-dd")
-                       // let finalDateDBb = dateInNY?.toFormat("dd-MM-yyyy")
-                       print(ghf)
                         
-                        if  dateInNY!.date.isAfterDate(self.datePickerFrom.date , orEqual: true, granularity: .year)
-                                && dateInNY!.date.isBeforeDate(self.datePickerTo.date ,orEqual: true, granularity: .year){
-                                
+                        let replaced = singleDate.key.replacingOccurrences(of: "_", with: "-")
+                        //var tfg = "2010-05-20"
+                        // print(replaced)
+                        // let ghf = dateFormatter.date(from: replaced)
+                        let datefromDB = replaced.toDate()
+                        print(self.datePickerFrom.date.inDefaultRegion())
+                        let dbDateComapreRangeOrEqual =
+                            datefromDB!.isInRange(date: self.datePickerFrom.date.inDefaultRegion(), and: self.datePickerTo.date.inDefaultRegion(),orEqual: true,granularity: .day)
+                        let dbLeassThanToDateOrEqual = datefromDB!.isBeforeDate(self.datePickerTo.date.inDefaultRegion(), orEqual: true, granularity: .day)
+                        print(self.datePickerFrom.date)
+                        if  dbDateComapreRangeOrEqual && dbLeassThanToDateOrEqual
+                        
+                        {
+                            
                             self.allSales.append(SalesDetails(dateSales: replaced, fooodItemsSold: self.fooodItemsSold))
                             self.fooodItemsSold = []
-                           // print(self.allSales)
+                            // print(self.allSales)
                             DispatchQueue.main.async {
                                 self.accountTable.reloadData()
                             }
-                            }
+                        }
                         
-                     
+                        
                     }
                     
                 }
@@ -184,13 +187,17 @@ extension AccountViewController{
     }
     
     @objc func donePressedTo(){
-       
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current
         
         toDateField.text = dateFormatter.string(from: datePickerTo.date)
+        self.fooodItemsSold = []
+        DispatchQueue.main.async {
+            self.accountTable.reloadData()
+        }
         
         getSoldItemData()
         self.view.endEditing(true)
